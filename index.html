@@ -366,7 +366,9 @@
                 });
             })
             .catch(function(err) {
-                showError('课程数据加载失败: ' + err.message + '。请刷新页面重试。');
+                showError(location.protocol === 'file:'
+                    ? '浏览器直接打开本地文件时无法读取课程数据。请在项目目录运行 python3 -m http.server 8000，然后访问 http://localhost:8000/ 。'
+                    : '课程数据加载失败: ' + err.message + '。请刷新页面重试。');
             });
     })();
 </script>
