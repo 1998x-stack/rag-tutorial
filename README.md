@@ -11,7 +11,8 @@
 ## 🚀 快速开始
 
 ```bash
-open index.html   # macOS，纯静态即开即看
+python3 -m http.server 8000   # 在项目根目录启动本地静态服务器
+# 然后在浏览器打开 http://localhost:8000/
 ```
 
 ## 📂 项目结构
