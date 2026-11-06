@@ -1,0 +1,14 @@
+### 2026-11-06 18:15 UTC — ChatGPT Portfolio Iteration
+- Run ID: portfolio-20261106T181517Z-acd4f4f3
+- Repo / Base SHA: 1998x-stack/rag-tutorial / b39cddd72864cb57bb0a1d72144d77431c647a52
+- Historical context: Default-branch docs/improvements.md returned GitHub 404 (first initialization); repository PR search returned no PRs; last three commits inspected; no existing portfolio PR identified.
+- Product problem & expected user value: README recommended opening index.html directly, but the index fetches courses.json and browsers commonly block local file fetch; learners see a generic retry message without recovery instructions. Show actionable local server guidance and correct quick start.
+- Engineering diagnosis & evidence: index.html fetch('courses.json') catch previously always suggested refreshing; README.md used open index.html. A local-file fetch rejection does not become successful by refreshing.
+- Options & decision: (1) P1 local-file recovery guidance score 15 (benefit 5, correctness 3, evidence 5, verifiability 5, cost 2, risk 1); (2) P2 add loading indicator score 10 (4+1+4+4-2-1); (3) P2 validate chapter links score 9 (3+2+3+4-2-1). Choose the smallest verified UX fix; no data format changes.
+- Changes: index.html provides file-protocol-specific recovery instructions, preserving HTTP failure text; README.md documents python3 -m http.server 8000; tests/index-error.test.cjs adds file and HTTP rejection regression checks.
+- Validation: A: executed index.html extracted script with mocked DOM and rejected fetch in JS runtime, both file: and http: branches produced expected messages (2/2); D: node --test tests/index-error.test.cjs added but not run against clean repository checkout due to inaccessible GitHub network from local shell; C: source replacement matched exactly once. GitHub CI not verified.
+- Security & regression review: No credentials, dependencies, permissions, workflows, deployment or data changes; message contains fixed local-only command and no untrusted interpolation in the new file branch. HTTP branch remains unchanged.
+- Risk & rollback: Low-risk UI text change; revert the feature branch commits if needed. No automatic merge without clean-checkout tests and merge checks.
+- Follow-up: Run node --test tests/index-error.test.cjs in clean checkout and verify actual browser file/HTTP error states before merge.
+- Commit: pending
+- PR: pending
