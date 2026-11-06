@@ -10,5 +10,5 @@
 - Security & regression review: No credentials, dependencies, permissions, workflows, deployment or data changes; message contains fixed local-only command and no untrusted interpolation in the new file branch. HTTP branch remains unchanged.
 - Risk & rollback: Low-risk UI text change; revert the feature branch commits if needed. No automatic merge without clean-checkout tests and merge checks.
 - Follow-up: Run node --test tests/index-error.test.cjs in clean checkout and verify actual browser file/HTTP error states before merge.
-- Commit: pending
-- PR: pending
+- Commit: 09835e2541792a726d702ea7dae54adbfb3dcbb2 (initial audit commit; final head will change when updating this record)
+- PR: https://github.com/1998x-stack/rag-tutorial/pull/1 (Draft; merge blocked)
