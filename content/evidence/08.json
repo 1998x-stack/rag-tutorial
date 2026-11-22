@@ -1,0 +1,22 @@
+{
+  "chapter": 8,
+  "title": "稀疏检索：倒排索引与 BM25 的词频饱和",
+  "sources": [
+    {"id": "bm25review", "url": "https://doi.org/10.1561/1500000019", "kind": "survey"},
+    {"id": "okapi1995", "url": "https://trec.nist.gov/pubs/trec3/t3_proceedings.html", "kind": "conference_paper"},
+    {"id": "es", "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-similarity.html", "kind": "official_docs"},
+    {"id": "jieba", "url": "https://github.com/fxsjy/jieba", "kind": "software_docs"}
+  ],
+  "claims": [
+    {"claim": "倒排索引以词项为中心记录包含它的文档列表（posting list）", "source": "engineering", "scope": "信息检索的基础数据结构", "limitations": "具体存储与压缩因实现而异"},
+    {"claim": "BM25 对词频做饱和处理并对文档长度归一化", "source": "bm25review", "scope": "BM25 概率检索框架", "limitations": "IDF 形式与平滑细节因实现而异"},
+    {"claim": "k1 控制词频饱和速度，b 控制文档长度归一化强度", "source": "bm25review", "scope": "公式参数的定性作用", "limitations": "最优取值需在自有标注集上调参"},
+    {"claim": "Lucene/Elasticsearch 的 BM25 默认 k1=1.2、b=0.75", "source": "es", "scope": "实现默认值，非普适最优", "limitations": "仅代表该实现，且版本可能变化"},
+    {"claim": "中文分词结果直接决定词项空间与 df/IDF", "source": "jieba", "scope": "工程观察", "limitations": "本页实验用二元组，不依赖 jieba"}
+  ],
+  "toy_demo": "标准库 BM25：中文字符二元组分词，无第三方依赖、无网络；仅演示机制",
+  "unverified_metrics": [
+    "饱和/长度曲线按公式绘制：展示形状，不是实测基准",
+    "演示按钮数值：按公式计算的示意值，非数据集测量"
+  ]
+}

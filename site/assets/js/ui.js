@@ -47,6 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
       return '字符窗口 size=' + size + ', overlap=3：' + windows.join('  |  ') +
         '。仅按字符滑动，不是 tokenizer。';
     },
+    'bm25-saturation': () => {
+      const k1 = 1.2;
+      const f = t => t * (k1 + 1) / (t + k1);
+      const rows = [1, 5, 10].map(t => 'tf=' + t + ' → 贡献 ' + f(t).toFixed(2));
+      return '取 k1=1.2，并令 |D|=avgdl（长度因子=1）：' + rows.join('；') +
+        '。上界为 k1+1=2.2，出现次数再多也只趋近它，不会线性增长。';
+    },
     'ann-recall': () => {
       const total = 400;
       const rows = [[1, 62, 0.46], [2, 128, 0.71], [4, 246, 0.88], [8, 400, 1.0]];
