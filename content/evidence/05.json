@@ -1,0 +1,65 @@
+{
+  "chapter": 5,
+  "title": "Chunk boundaries and retrieval units",
+  "sources": [
+    {
+      "id": "azure",
+      "url": "https://learn.microsoft.com/en-us/azure/search/vector-search-how-to-chunk-documents",
+      "kind": "official_docs"
+    },
+    {
+      "id": "anthropic",
+      "url": "https://www.anthropic.com/research/contextual-retrieval",
+      "kind": "official_research"
+    },
+    {
+      "id": "late",
+      "url": "https://arxiv.org/abs/2409.04701",
+      "kind": "primary_paper"
+    },
+    {
+      "id": "densex",
+      "url": "https://aclanthology.org/2024.emnlp-main.845/",
+      "kind": "primary_paper"
+    },
+    {
+      "id": "raptor",
+      "url": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/8a2acd174940dbca361a6398a4f9df91-Abstract-Conference.html",
+      "kind": "primary_paper"
+    }
+  ],
+  "claims": [
+    {
+      "claim": "Chunking parameters depend on embedding limits, document structure and evaluation",
+      "source": "azure",
+      "scope": "engineering guidance",
+      "limitations": "No universally optimal size or overlap"
+    },
+    {
+      "claim": "Contextual Retrieval prepends chunk-specific document context prior to retrieval index representations",
+      "source": "anthropic",
+      "scope": "method description and reported evaluations",
+      "limitations": "Reported reductions not guaranteed across domains"
+    },
+    {
+      "claim": "Late Chunking contextualizes tokens before pooling per chunk",
+      "source": "late",
+      "scope": "paper method",
+      "limitations": "Requires supported long-context encoder and suitable span mapping"
+    },
+    {
+      "claim": "Proposition retrieval is a studied indexing granularity",
+      "source": "densex",
+      "scope": "paper's tasks",
+      "limitations": "Generalization to all document types is unproven"
+    },
+    {
+      "claim": "RAPTOR uses hierarchical abstraction/retrieval",
+      "source": "raptor",
+      "scope": "paper architecture",
+      "limitations": "Not equivalent to heading-only parent-child chunks"
+    }
+  ],
+  "toy_demo": "Fixed windows operate on Python Unicode code points, not model tokens; no model accuracy claims",
+  "unverified_metrics": []
+}

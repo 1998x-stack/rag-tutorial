@@ -1,0 +1,43 @@
+{
+  "chapter": 4,
+  "title": "Document parsing and provenance",
+  "sources": [
+    {
+      "id": "pypdf",
+      "url": "https://pypdf.readthedocs.io/en/stable/user/extract-text.html",
+      "kind": "official_docs"
+    },
+    {
+      "id": "docling",
+      "url": "https://arxiv.org/abs/2408.09869",
+      "kind": "primary_paper"
+    },
+    {
+      "id": "docling_doc",
+      "url": "https://docling-project.github.io/docling/getting_started/quickstart/",
+      "kind": "official_docs"
+    }
+  ],
+  "claims": [
+    {
+      "claim": "PDF text extraction alone does not reconstruct reliable reading order or OCR",
+      "source": "pypdf",
+      "scope": "pypdf documentation's limitations",
+      "limitations": "Actual behavior differs by PDF and tool version"
+    },
+    {
+      "claim": "Docling includes structural layout and table recognition models",
+      "source": "docling",
+      "scope": "technical report design",
+      "limitations": "Do not claim universal correctness or identical SDK API across versions"
+    },
+    {
+      "claim": "DocumentConverter can convert a PDF and export Markdown",
+      "source": "docling_doc",
+      "scope": "official quickstart",
+      "limitations": "Markdown export does not guarantee exact cell/bbox lineage"
+    }
+  ],
+  "toy_demo": "Basic standard-library HTML parser demonstrates header-to-value table mappings only; not a PDF/OCR engine",
+  "unverified_metrics": []
+}

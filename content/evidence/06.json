@@ -1,0 +1,76 @@
+{
+  "chapter": 6,
+  "title": "Embeddings and retrieval geometry",
+  "sources": [
+    {
+      "id": "sbert",
+      "url": "https://aclanthology.org/D19-1410/",
+      "kind": "primary_paper"
+    },
+    {
+      "id": "dpr",
+      "url": "https://aclanthology.org/2020.emnlp-main.550/",
+      "kind": "primary_paper"
+    },
+    {
+      "id": "colbert",
+      "url": "https://arxiv.org/abs/2004.12832",
+      "kind": "primary_paper"
+    },
+    {
+      "id": "bgem3",
+      "url": "https://arxiv.org/abs/2402.03216",
+      "kind": "primary_paper"
+    },
+    {
+      "id": "qwen3",
+      "url": "https://arxiv.org/abs/2506.05176",
+      "kind": "primary_paper"
+    },
+    {
+      "id": "openai",
+      "url": "https://developers.openai.com/api/docs/guides/embeddings",
+      "kind": "official_docs"
+    }
+  ],
+  "claims": [
+    {
+      "claim": "Sentence-BERT uses siamese/triplet structures for sentence embeddings",
+      "source": "sbert",
+      "scope": "paper methods",
+      "limitations": "Encoder specifics vary by checkpoint"
+    },
+    {
+      "claim": "DPR uses question and passage encoders for retrieval",
+      "source": "dpr",
+      "scope": "paper model",
+      "limitations": "Do not assert encoder weights always shared"
+    },
+    {
+      "claim": "ColBERT scores contextualized token embeddings with late interaction MaxSim",
+      "source": "colbert",
+      "scope": "simplified scoring formula",
+      "limitations": "Production includes masks/index/search/normalization details"
+    },
+    {
+      "claim": "BGE-M3 supports dense, sparse and multivector methods",
+      "source": "bgem3",
+      "scope": "paper described architecture",
+      "limitations": "SDK support depends on package and model version"
+    },
+    {
+      "claim": "Qwen3 Embedding publishes embedding and reranking models",
+      "source": "qwen3",
+      "scope": "model family paper",
+      "limitations": "No fabricated universal MTEB ranking"
+    },
+    {
+      "claim": "OpenAI text-embedding-3 defaults to small 1536 and large 3072 dimensions",
+      "source": "openai",
+      "scope": "official model guide as checked Nov 2026",
+      "limitations": "API dimensions parameter and model docs may evolve"
+    }
+  ],
+  "toy_demo": "All vectors are hand-assigned 2D examples; scores do not represent real model embeddings",
+  "unverified_metrics": []
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Chromium release smoke tests for the new homepage + chapters 01–03."""
+"""Chromium release smoke tests for the new homepage + chapters 01–06."""
 from pathlib import Path
 import json, sys
 from playwright.sync_api import sync_playwright
@@ -15,7 +15,7 @@ with sync_playwright() as p:
     browser = p.chromium.launch(headless=True)
     for width, height in ((1440, 900), (390, 844), (360, 800)):
         for name, path in [("home", SITE / "index.html")] + [
-            (f"{n:02}", SITE / "chapters" / f"{n:02}.html") for n in (1, 2, 3)
+            (f"{n:02}", SITE / "chapters" / f"{n:02}.html") for n in range(1, 7)
         ]:
             page = browser.new_page(viewport={"width": width, "height": height}, device_scale_factor=1)
             page_errors = []

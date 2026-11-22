@@ -21,7 +21,7 @@ for f in SITE.rglob('*.html'):
  text=f.read_text(encoding='utf-8');p=Page();p.feed(text)
  # redirects are exempt from article semantics
  is_redirect='http-equiv="refresh"' in text
- is_legacy=(f.parent==SITE/'chapters' and f.stem.isdigit() and int(f.stem)>3)
+ is_legacy=(f.parent==SITE/'chapters' and f.stem.isdigit() and int(f.stem)>6)
  if not is_redirect and not is_legacy and f.name!='index.html' and (p.h1!=1 or p.article!=1 or p.main!=1): errors.append(f'{f}: semantic landmark mismatch')
  if not is_redirect and f.name=='index.html' and f.parent==SITE and p.h1!=1:errors.append('home: missing unique H1')
  for u in p.links:
@@ -37,7 +37,7 @@ for f in (SITE/'assets/figures').glob('*.svg'):
 for n in range(1,29):
  if not (SITE/'chapters'/f'{n:02}.html').exists():errors.append(f'chapter {n:02} missing')
  if not (SITE/f'{n:02}.html').exists():errors.append(f'compat {n:02} missing')
-for n in range(1,4):
+for n in range(1,7):
  if not (ROOT/'content/evidence'/f'{n:02}.json').exists():errors.append(f'evidence {n:02} missing')
 print('Static site verification:', 'PASS' if not errors else 'FAIL')
 print('HTML:',len(list(SITE.rglob('*.html'))),'SVG:',len(list((SITE/'assets/figures').glob('*.svg'))),'issues:',len(errors))
