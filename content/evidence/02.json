@@ -1,0 +1,40 @@
+{
+  "chapter": 2,
+  "title": "大语言模型怎样利用上下文",
+  "sources": [
+    {
+      "id": "vaswani2017",
+      "url": "https://arxiv.org/abs/1706.03762",
+      "kind": "primary_paper"
+    },
+    {
+      "id": "liu2024",
+      "url": "https://aclanthology.org/2024.tacl-1.9/",
+      "kind": "primary_paper"
+    },
+    {
+      "id": "msdocs",
+      "url": "https://learn.microsoft.com/en-us/azure/search/vector-search-how-to-chunk-documents",
+      "kind": "official_docs"
+    }
+  ],
+  "claims": [
+    {
+      "claim": "缩放点积注意力等于 softmax(QKᵀ/√dₖ)V",
+      "source": "vaswani2017",
+      "scope": "原始注意力形式，mask、heads 与实现变体另论"
+    },
+    {
+      "claim": "模型利用长上下文的位置敏感性在部分实验中被观察到",
+      "source": "liu2024",
+      "scope": "不可当作任何模型的普遍定律"
+    },
+    {
+      "claim": "输入窗口约束影响 RAG chunking",
+      "source": "msdocs",
+      "scope": "具体 token 限制依模型版本而变"
+    }
+  ],
+  "toy_demo": "8192 token 守恒示例是假设值，不代表真实分词统计",
+  "unverified_metrics": []
+}

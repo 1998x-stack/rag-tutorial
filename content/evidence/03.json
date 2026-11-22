@@ -1,0 +1,40 @@
+{
+  "chapter": 3,
+  "title": "RAG 核心架构",
+  "sources": [
+    {
+      "id": "lewis2020",
+      "url": "https://arxiv.org/abs/2005.11401",
+      "kind": "primary_paper"
+    },
+    {
+      "id": "dpr2020",
+      "url": "https://aclanthology.org/2020.emnlp-main.550/",
+      "kind": "primary_paper"
+    },
+    {
+      "id": "msrag",
+      "url": "https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview",
+      "kind": "official_docs"
+    }
+  ],
+  "claims": [
+    {
+      "claim": "离线建立可查询索引与在线查询生成可以分离",
+      "source": "msrag",
+      "scope": "一种常用工程模式，并非所有实现都必须离线"
+    },
+    {
+      "claim": "稠密检索可通过双编码器编码查询和文档",
+      "source": "dpr2020",
+      "scope": "两端编码器应兼容，但未必相同权重"
+    },
+    {
+      "claim": "RAG 在生成模型之外引入检索证据",
+      "source": "lewis2020",
+      "scope": "工程实现可以不同于原论文的训练与推断"
+    }
+  ],
+  "toy_demo": "使用二元字符集交集检索，只有 Retrieve+Augment，无模型生成",
+  "unverified_metrics": []
+}
