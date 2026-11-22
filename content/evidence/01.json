@@ -1,0 +1,40 @@
+{
+  "chapter": 1,
+  "title": "RAG 为什么需要检索",
+  "sources": [
+    {
+      "id": "lewis2020",
+      "url": "https://arxiv.org/abs/2005.11401",
+      "kind": "primary_paper"
+    },
+    {
+      "id": "dpr2020",
+      "url": "https://aclanthology.org/2020.emnlp-main.550/",
+      "kind": "primary_paper"
+    },
+    {
+      "id": "liu2024",
+      "url": "https://aclanthology.org/2024.tacl-1.9/",
+      "kind": "primary_paper"
+    }
+  ],
+  "claims": [
+    {
+      "claim": "Lewis 等 2020 论文包含 RAG-Sequence 与 RAG-Token 变体",
+      "source": "lewis2020",
+      "scope": "论文具体定义，现代工程实现不一定训练这两种边际化模型"
+    },
+    {
+      "claim": "DPR 使用双编码器结构做稠密段落检索",
+      "source": "dpr2020",
+      "scope": "2020 实验架构"
+    },
+    {
+      "claim": "部分模型在长上下文中间位置利用证据存在困难",
+      "source": "liu2024",
+      "scope": "被测试模型与任务，不可直接外推所有 2026 模型"
+    }
+  ],
+  "toy_demo": "引用 ID 语法存在性检查不是事实核查",
+  "unverified_metrics": []
+}

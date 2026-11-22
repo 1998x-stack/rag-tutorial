@@ -1,0 +1,29 @@
+name: Validate static RAG site
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate structure, references, SVG and content
+        run: python3 scripts/check_site.py
+      - name: Execute offline RAG unit tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Install Chromium test tooling
+        run: |
+          python3 -m pip install playwright
+          python3 -m playwright install --with-deps chromium
+      - name: Screenshot and exercise responsive pages
+        run: python3 scripts/browser_check.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rag-browser-report
+          path: qa/browser/
+          if-no-files-found: ignore
