@@ -13,6 +13,8 @@ jobs:
           python-version: '3.12'
       - name: Validate structure, references, SVG and content
         run: python3 scripts/check_site.py
+      - name: Execute offline RAG unit tests
+        run: python3 -m unittest discover -s tests -v
       - name: Install Chromium test tooling
         run: |
           python3 -m pip install playwright
