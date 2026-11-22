@@ -1,0 +1,24 @@
+{
+  "chapter": 9,
+  "title": "稠密检索：双编码器与语义向量",
+  "sources": [
+    {"id": "dpr", "url": "https://aclanthology.org/2020.emnlp-main.550/", "kind": "primary_paper"},
+    {"id": "sbert", "url": "https://aclanthology.org/D19-1410/", "kind": "primary_paper"},
+    {"id": "colbert", "url": "https://arxiv.org/abs/2004.12832", "kind": "primary_paper"},
+    {"id": "hnsw", "url": "https://arxiv.org/abs/1603.09320", "kind": "primary_paper"}
+  ],
+  "claims": [
+    {"claim": "双编码器分别编码查询与文档，再比较两个向量", "source": "dpr", "scope": "paper model", "limitations": "编码器结构与是否共享权重是实现选择"},
+    {"claim": "DPR 使用两个独立训练的编码器，权重不必共享", "source": "dpr", "scope": "paper model", "limitations": "不可断言查询端与文档端必须同一编码器"},
+    {"claim": "对比学习用批内负样本训练检索向量", "source": "dpr", "scope": "training objective", "limitations": "负例质量影响效果；形式因方法而异"},
+    {"claim": "句向量可用对比式目标训练", "source": "sbert", "scope": "paper method", "limitations": "与 DPR 目标相近但不完全相同"},
+    {"claim": "延迟交互的 MaxSim 是双编码器之外的替代方案", "source": "colbert", "scope": "paper method", "limitations": "存储与计算开销不同"},
+    {"claim": "归一化后余弦等于内积；点积受向量长度影响", "source": "engineering", "scope": "数学性质", "limitations": "未归一化时两者排序可能不同"},
+    {"claim": "稠密检索在线近邻搜索依赖 ANN 索引", "source": "hnsw", "scope": "工程衔接", "limitations": "ANN 引入独立的近似误差"}
+  ],
+  "toy_demo": "标准库二维向量：比较余弦与点积排序差异；向量为人为指定，非学习嵌入",
+  "unverified_metrics": [
+    "二维向量与排序数值：教学示意，非模型或数据集测量",
+    "语义漂移/向量坍塌：概念性描述，未引用具体基准数字"
+  ]
+}

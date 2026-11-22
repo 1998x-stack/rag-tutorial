@@ -47,6 +47,17 @@ document.addEventListener('DOMContentLoaded', () => {
       return '字符窗口 size=' + size + ', overlap=3：' + windows.join('  |  ') +
         '。仅按字符滑动，不是 tokenizer。';
     },
+    'cosine-vs-dot': () => {
+      const q = [0.9, 0.4];
+      const docs = { D1: [1.0, 0.1], D2: [3.0, 3.0], D3: [-0.8, 0.6] };
+      const norm = a => Math.hypot(a[0], a[1]);
+      const cos = (a, b) => (a[0] * b[0] + a[1] * b[1]) / (norm(a) * norm(b));
+      const dot = (a, b) => a[0] * b[0] + a[1] * b[1];
+      const names = Object.keys(docs);
+      const by = f => [...names].sort((x, y) => f(q, docs[y]) - f(q, docs[x])).join(' > ');
+      return '余弦排序：' + by(cos) + '；点积排序：' + by(dot) +
+        '。点积把长向量 D2 抬到最前。数值来自人为指定的二维向量，不是模型输出。';
+    },
     'bm25-saturation': () => {
       const k1 = 1.2;
       const f = t => t * (k1 + 1) / (t + k1);
