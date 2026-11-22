@@ -47,6 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
       return '字符窗口 size=' + size + ', overlap=3：' + windows.join('  |  ') +
         '。仅按字符滑动，不是 tokenizer。';
     },
+    'ann-recall': () => {
+      const total = 400;
+      const rows = [[1, 62, 0.46], [2, 128, 0.71], [4, 246, 0.88], [8, 400, 1.0]];
+      return '玩具 IVF（教学示意，非实测）：' + rows.map(r =>
+        'nprobe=' + r[0] + ' → 扫描 ' + r[1] + '/' + total + '，recall@5≈' + r[2].toFixed(2)
+      ).join('；') + '。nprobe 增大时扫描量与召回同时上升，实际以你的数据实测为准。';
+    },
     'vector-geometry': () => {
       const a = [0.9, 0.1], b = [3, 3];
       const dotA = a[0], dotB = b[0];

@@ -7,11 +7,12 @@
 .toc-index{display:inline-block;min-width:25px;color:var(--accent);font:700 .75rem ui-monospace,monospace}
 .article .diagram{background:linear-gradient(135deg,#f7faf8 0%,#f5f8f6 100%);box-shadow:0 1px 2px rgba(28,58,53,.03)}
 .article .diagram img{height:auto;max-width:none}
+.article .diagram svg{display:block;width:100%;height:auto;min-width:650px}
 .article .example{background:linear-gradient(180deg,#fff,#fafdfc)}
 .article .example label{display:block;font-size:.9rem;font-weight:650;margin:0 0 12px}
 .article .example input[type="range"]{display:block;width:min(100%,440px);accent-color:var(--accent);margin:10px 0 18px;cursor:pointer}
 .article .example output{overflow-wrap:anywhere}
 .article :is(h2,h3){text-wrap:pretty}
-@media(max-width:540px){.reading-path span{padding:3px 9px;font-size:.73rem}.article .example{padding:15px}}
+@media(max-width:540px){.reading-path span{padding:3px 9px;font-size:.73rem}.article .example{padding:15px}.article .diagram svg{min-width:640px}}
 @media(prefers-reduced-motion:reduce){.chapter-nav a,.example button{transition:none!important}}
-@media print{.reading-path,.example button,.example input[type="range"]{display:none!important}.article .diagram img{max-width:100%;min-width:0;page-break-inside:avoid}.math{overflow:visible}.article-header:after{background:#333}}
+@media print{.reading-path,.example button,.example input[type="range"]{display:none!important}.article .diagram img,.article .diagram svg{max-width:100%;min-width:0;page-break-inside:avoid}.math{overflow:visible}.article-header:after{background:#333}}

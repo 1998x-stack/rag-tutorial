@@ -1,0 +1,23 @@
+{
+  "chapter": 7,
+  "title": "向量索引：HNSW、IVF 与近似的代价",
+  "sources": [
+    {"id": "hnsw", "url": "https://arxiv.org/abs/1603.09320", "kind": "primary_paper"},
+    {"id": "faiss", "url": "https://arxiv.org/abs/1702.08734", "kind": "primary_paper"},
+    {"id": "pq", "url": "https://arxiv.org/abs/1011.5201", "kind": "primary_paper"},
+    {"id": "annbench", "url": "https://ann-benchmarks.com/", "kind": "benchmark_suite"}
+  ],
+  "claims": [
+    {"claim": "准确最近邻检索需要对全部向量做距离计算", "source": "engineering", "scope": "暴力/flat 检索定义", "limitations": "耗时还取决于维度、硬件与并行度"},
+    {"claim": "HNSW 使用分层图与贪心搜索做近似最近邻", "source": "hnsw", "scope": "paper model", "limitations": "论文基准数字绑定当时数据集与参数，不能当作任意配置承诺"},
+    {"claim": "IVF 先用聚类分桶，查询只扫描 nprobe 个簇", "source": "faiss", "scope": "工程系统描述", "limitations": "召回受聚类质量与 nprobe 影响"},
+    {"claim": "PQ 将向量分段量化成短码以降低内存", "source": "pq", "scope": "paper method", "limitations": "存在量化误差，距离为近似值"},
+    {"claim": "ANN 索引存在召回率与延迟的权衡", "source": "annbench", "scope": "基准观察", "limitations": "具体曲线随数据、参数与版本变化"},
+    {"claim": "元数据前置过滤与后置过滤会影响召回", "source": "engineering", "scope": "一种常用工程经验", "limitations": "取决于引擎是否支持带过滤的遍历"}
+  ],
+  "toy_demo": "标准库二维点集上，暴力精确前 k 与随机质心玩具 IVF(nprobe) 的召回对比；非任何向量库实现",
+  "unverified_metrics": [
+    "n=10^6、d=768 时约 7.68×10^8 次乘加：教学示意，非基准测量",
+    "演示按钮中的召回数值：教学示意，非实测"
+  ]
+}
