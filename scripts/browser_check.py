@@ -30,6 +30,8 @@ with sync_playwright() as p:
                 if over:
                     problems.append(f"{name}@{width}: whole-page horizontal overflow")
                 for img in page.locator("img").all():
+                    img.scroll_into_view_if_needed()
+                    img.evaluate("(e) => e.decode().catch(() => null)")
                     if not img.evaluate("(e) => e.complete && e.naturalWidth > 0"):
                         problems.append(f"{name}@{width}: broken image {img.get_attribute('src')}")
                 if name != "home":
