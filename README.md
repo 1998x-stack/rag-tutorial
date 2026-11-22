@@ -45,11 +45,7 @@ python3 scripts/check_site.py
 
 ## GitHub Pages
 
-仓库含 `.github/workflows/pages.yml`，会尝试将 `site/` 作为静态站点构建输出部署。需要在 **Settings → Pages → Build and deployment** 中选 **GitHub Actions**。提交工作流不等于证明已上线；必须查看 Actions 成功记录和公开 URL。
+当前仓库已通过 GitHub 自带的 **main 分支根目录 Pages 发布**；仓库根目录的 `index.html` 会跳转到 `site/index.html`，而 `site/` 是独立维护的标准静态站点。不要并行运行第二套部署流程。已观察到 2026-11-22 的分支 Pages 构建成功；公开 URL 是否可在当前网络打开仍需单独检查。
 
-## 重要边界
+`.github/workflows/pages.yml` 作为**未来迁移到 GitHub Actions 发布源**的手动备选流程保留，不随每次 push 自动触发。只有将 Settings → Pages → Build and deployment 的 Source 切换为 GitHub Actions 后，才手动运行该工作流。此时输出路径为 `site/`，根目录自动成为新的课程首页。
 
-- 原始 RAG 模型来自 Lewis 等人 2020 年的具体研究；现代工程 RAG 不是该论文的唯一实现形式。
-- 代码的玩具案例不应称为完整生产系统；所有评估指标需注明数据集和实验设置。
-- `content/legacy-notes/` 只是历史资料，不是同编号 HTML 的规范源文件。
-- 视觉设计参考 [Olah-style-posts](https://github.com/1998x-stack/Olah-style-posts)，文字、图片与代码独立创作。
