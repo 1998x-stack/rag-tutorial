@@ -1,0 +1,22 @@
+{
+  "chapter": 13,
+  "title": "上下文增强与提示工程：检索之后的最后一公里",
+  "sources": [
+    {"id": "lost_middle", "url": "https://arxiv.org/abs/2307.03172", "kind": "primary_paper"},
+    {"id": "llmlingua", "url": "https://arxiv.org/abs/2310.05736", "kind": "primary_paper"},
+    {"id": "rag_orig", "url": "https://arxiv.org/abs/2005.11401", "kind": "primary_paper"}
+  ],
+  "claims": [
+    {"claim": "相关信息位于上下文中间时，模型的利用率低于位于开头或结尾时（U 形位置效应）", "source": "lost_middle", "scope": "paper finding", "limitations": "形状与幅度随模型、任务与提示变化，并非所有模型同形"},
+    {"claim": "上下文窗口有限；填满会带来位置稀释、信噪比下降与成本上升", "source": "engineering", "scope": "工程推理", "limitations": "具体预算需按模型与任务实测"},
+    {"claim": "把最相关文档放在两端（三明治排列）是利用首尾高关注区的常用启发式", "source": "engineering", "scope": "工程启发式", "limitations": "是否优于简单降序依模型与任务而定"},
+    {"claim": "面向检索的提示应严格约束模型只依据提供的资料回答并标注来源", "source": "rag_orig", "scope": "framework / engineering", "limitations": "模板无法保证消除幻觉，换模型效果可能变差"},
+    {"claim": "令牌级压缩（如 LLMLingua）用小模型裁剪低相关内容以压缩提示", "source": "llmlingua", "scope": "paper method", "limitations": "需额外模型与推理，压缩可能丢失关键细节"},
+    {"claim": "注入来源、页码、日期等元数据有助于模型判断资料时效并支撑引用", "source": "rag_orig", "scope": "engineering", "limitations": "元数据自身占用 token 预算"}
+  ],
+  "toy_demo": "标准库手写 U 形位置权重函数，比较同一相关文档在不同位置的“曝光度”；权重为人为设定，非模型实测注意力",
+  "unverified_metrics": [
+    "原页“开头结尾 >80%、中间 <50%”“GPT-4 128K / Claude 200K”“2000–6000 token”“压缩到 20–30%”“prompt 提升 20–30%”等数字或已过期、或无可靠出处，已删除或改为定性表述，未在本篇复述",
+    "“2000～6000 token”仅作为常见工程区间提及，并明确标注为启发式"
+  ]
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 400" role="img" aria-labelledby="t13pos d13pos">
+<title id="t13pos">相关信息放在上下文不同位置时的有效利用率呈 U 形</title>
+<desc id="t13pos">同一条相关文档放在上下文的开头或结尾时更容易被模型用上，放在中间时利用率明显下降；曲线为对“迷失在中间”现象的定性示意，不是某个模型的实测数值。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:16px;font-weight:700}.s{font-size:14px;fill:#4c686c}.a{font-size:14px;font-weight:720;fill:#147f80}.o{font-size:14px;font-weight:720;fill:#d06d4d}</style>
+<rect x="0" y="0" width="1080" height="400" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">同样相关的内容，放中间就更容易被忽略</text>
+<line x1="90" y1="320" x2="620" y2="320" stroke="#8ba7a3" stroke-width="1.6"/>
+<line x1="90" y1="320" x2="90" y2="96" stroke="#8ba7a3" stroke-width="1.6"/>
+<text x="250" y="360" class="s">相关文档在上下文中的位置（开头 → 结尾）</text>
+<text x="40" y="210" class="s" transform="rotate(-90 40 210)">被有效利用的程度</text>
+<polyline points="90,120 180,250 310,300 440,250 530,180 620,130" fill="none" stroke="#d06d4d" stroke-width="2.8"/>
+<circle cx="90" cy="120" r="5" fill="#147f80"/><text x="66" y="106" class="a">开头高</text>
+<circle cx="310" cy="300" r="5" fill="#7461ba"/><text x="248" y="288" class="s">中间低</text>
+<circle cx="620" cy="130" r="5" fill="#147f80"/><text x="560" y="116" class="a">结尾回升</text>
+<rect x="700" y="120" width="340" height="150" rx="12" fill="#fff" stroke="#ceddd8" stroke-width="1.5"/>
+<text x="720" y="154" class="l">U 形位置效应</text>
+<text x="720" y="186" class="s">开头与结尾位置利用率最高</text>
+<text x="720" y="212" class="s">中间位置最容易被“看漏”</text>
+<text x="720" y="244" class="s">因此最相关的文档不应排在中间</text>
+<text x="38" y="388" class="s">形状依据 Liu et al. 2023 报告的定性现象；曲线为教学示意，非某一模型或数据集的实测数值。</text>
+</svg>

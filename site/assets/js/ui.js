@@ -58,6 +58,18 @@ document.addEventListener('DOMContentLoaded', () => {
       return '余弦排序：' + by(cos) + '；点积排序：' + by(dot) +
         '。点积把长向量 D2 抬到最前。数值来自人为指定的二维向量，不是模型输出。';
     },
+    'position-weight': () => {
+      const n = 5;
+      const f = pos => {
+        const x = pos / (n - 1);
+        return 0.2 + 0.8 * Math.pow(2 * x - 1, 2);
+      };
+      const front = ['R', 'd2', 'd3', 'd4', 'd5'].indexOf('R');
+      const mid = ['d2', 'd3', 'R', 'd4', 'd5'].indexOf('R');
+      return '人为设定的 U 形权重：相关文档放最前 → 曝光度 ' + f(front).toFixed(2) +
+        '；放中间 → ' + f(mid).toFixed(2) +
+        '。权重是手写函数，不是模型实测的注意力；真实位置效应需在自己的模型上做消融。';
+    },
     'query-expand': () => {
       const QUERY = '价格';
       const syn = { '价格': ['价格', '定价', '售价', '费用'] };

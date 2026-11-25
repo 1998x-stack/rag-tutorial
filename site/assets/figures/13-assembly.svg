@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 380" role="img" aria-labelledby="t13asm d13asm">
+<title id="t13asm">把候选文档组装成送入生成模型的上下文</title>
+<desc id="t13asm">召回并重排后的候选先经过压缩与元数据注入，再按位置策略拼装成提示，最后交给语言模型生成答案；每一步都可能丢信息或引入偏差。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:16px;font-weight:700}.s{font-size:14px;fill:#4c686c}.a{font-size:14px;font-weight:720;fill:#147f80}.o{font-size:14px;font-weight:720;fill:#d06d4d}</style>
+<rect x="0" y="0" width="1080" height="380" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">从候选文档到一段可用的上下文</text>
+<rect x="40" y="150" width="170" height="80" rx="11" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="58" y="184" class="l">候选文档</text><text x="58" y="208" class="s">含检索 / 重排分数</text>
+<rect x="270" y="150" width="190" height="80" rx="11" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="288" y="184" class="l o">压缩 + 元数据</text><text x="288" y="208" class="s">删冗余、附来源</text>
+<rect x="520" y="150" width="190" height="80" rx="11" fill="#fff" stroke="#ceddd8" stroke-width="1.5"/>
+<text x="538" y="184" class="l">按位置策略拼装</text><text x="538" y="208" class="s">最相关放两端</text>
+<rect x="770" y="150" width="190" height="80" rx="11" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/>
+<text x="788" y="184" class="l">语言模型</text><text x="788" y="208" class="s">生成带引用的答案</text>
+<path d="M210 190 L270 190" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a13a)"/>
+<path d="M460 190 L520 190" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a13a)"/>
+<path d="M710 190 L770 190" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a13a)"/>
+<text x="40" y="286" class="s">每一步都在做取舍：压缩会丢细节，元数据会占 token，位置策略决定哪些内容被优先看到。</text>
+<text x="40" y="314" class="s">组装后的上下文是一个有预算上限的“容器”，不可能把所有候选都塞进去。</text>
+<defs><marker id="a13a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#8ba7a3"/></marker></defs>
+</svg>
