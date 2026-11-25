@@ -1,0 +1,23 @@
+{
+  "chapter": 12,
+  "title": "查询优化与重写：先修查询，再检索",
+  "sources": [
+    {"id": "hyde", "url": "https://arxiv.org/abs/2212.10496", "kind": "primary_paper"},
+    {"id": "stepback", "url": "https://arxiv.org/abs/2310.06117", "kind": "primary_paper"},
+    {"id": "query_rewrite", "url": "https://arxiv.org/abs/2305.14283", "kind": "primary_paper"},
+    {"id": "adaptive", "url": "https://arxiv.org/abs/2403.14403", "kind": "primary_paper"}
+  ],
+  "claims": [
+    {"claim": "HyDE 先用语言模型生成一段假设性文档，再编码该文档的向量去检索", "source": "hyde", "scope": "paper method", "limitations": "需一次 LLM 调用；假设文档可能含错误"},
+    {"claim": "HyDE 的有效性依赖“答案措辞比问题措辞更接近答案文档向量”这一假设", "source": "hyde", "scope": "paper method", "limitations": "在结构化语料或精确查询上可能失效"},
+    {"claim": "Step-Back 把具体问题抽象为更一般的问题再检索", "source": "stepback", "scope": "paper method", "limitations": "抽象层级由模型决定，可能过度抽象"},
+    {"claim": "查询分解把多意图问题拆成可独立检索的子问题", "source": "query_rewrite", "scope": "paper method", "limitations": "拆分错误或子问题过多会引入偏差与开销"},
+    {"claim": "查询改写可用于对齐查询与文档的措辞差异", "source": "query_rewrite", "scope": "paper method", "limitations": "改写可能跑偏，建议保留原查询并行召回"},
+    {"claim": "查询路由按查询类型选择不同检索策略", "source": "adaptive", "scope": "paper method", "limitations": "误路由会导致漏检；分类器需要标注数据"}
+  ],
+  "toy_demo": "标准库手工同义词表实现查询扩展；演示“未改写漏检、扩展后命中”，不是 HyDE 或 LLM 改写",
+  "unverified_metrics": [
+    "原页 HyDE +5~15% MRR、Step-Back +10~20% Recall、分解 +15~25%、路由 +10~20%、指代准确率 35%→78% 等数字均无可靠出处，已删除，未在本篇复述",
+    "延迟“百毫秒到数秒”为量级描述，非特定测量"
+  ]
+}

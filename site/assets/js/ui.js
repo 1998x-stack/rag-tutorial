@@ -58,6 +58,16 @@ document.addEventListener('DOMContentLoaded', () => {
       return '余弦排序：' + by(cos) + '；点积排序：' + by(dot) +
         '。点积把长向量 D2 抬到最前。数值来自人为指定的二维向量，不是模型输出。';
     },
+    'query-expand': () => {
+      const QUERY = '价格';
+      const syn = { '价格': ['价格', '定价', '售价', '费用'] };
+      const docs = ['X-200 电机的定价说明与采购流程', 'X-200 电机的安装步骤图解'];
+      const hits = (doc, terms) => terms.filter(t => doc.includes(t));
+      const rows = docs.map((d, i) =>
+        '文档' + (i + 1) + '：原始命中 ' + hits(d, [QUERY]).length +
+        ' 词，扩展后命中 ' + hits(d, syn[QUERY]).length + ' 词');
+      return rows.join('；') + '。扩展把只出现“定价”的文档拉了回来；这是手工同义词表演示，不是 HyDE 或 LLM 改写。';
+    },
     'toy-rerank': () => {
       const Q = '苹果公司2026年财务状况';
       const coarse = [

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 420" role="img" aria-labelledby="t12map d12map">
+<title id="t12map">查询改写分为“补全内容”与“改变结构”两大类</title>
+<desc id="d12map">原始查询可以沿两条路径改写：补全内容（同义扩展、HyDE 生成假设文档、指代消解）让查询更有料；改变结构（分解成子问题、回溯成抽象问题、路由到不同通路）让查询更适配检索方式。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:16px;font-weight:700}.s{font-size:14px;fill:#4c686c}.a{font-size:14px;font-weight:720;fill:#147f80}.o{font-size:14px;font-weight:720;fill:#d06d4d}</style>
+<rect x="0" y="0" width="1080" height="420" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">改写不是一种方法，而是两类目标</text>
+<rect x="36" y="168" width="180" height="84" rx="12" fill="#e2f1ee" stroke="#7db6a9"/>
+<text x="54" y="204" class="l">原始查询</text>
+<text x="54" y="228" class="s">短 / 口语 / 有指代</text>
+<rect x="300" y="80" width="330" height="150" rx="12" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="318" y="114" class="l a">补全内容</text>
+<text x="318" y="146" class="s">同义扩展、HyDE 生成假设文档、指代消解</text>
+<text x="318" y="172" class="s">目标：让查询包含可匹配的语义</text>
+<text x="318" y="198" class="s">代价：需要一次 LLM / 词典调用</text>
+<rect x="300" y="260" width="330" height="150" rx="12" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="318" y="294" class="l o">改变结构</text>
+<text x="318" y="326" class="s">分解成子问题、回溯成抽象问题、路由选通路</text>
+<text x="318" y="352" class="s">目标：让查询适配不同检索方式</text>
+<text x="318" y="378" class="s">代价：多子查询带来多次检索</text>
+<rect x="716" y="168" width="320" height="84" rx="12" fill="#ede9f7" stroke="#7461ba"/>
+<text x="734" y="204" class="l">送入检索</text>
+<text x="734" y="228" class="s">改写后的查询再编码 / 匹配</text>
+<path d="M216 190 C250 190 262 155 300 155" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a12m)"/>
+<path d="M216 230 C250 230 262 335 300 335" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a12m)"/>
+<path d="M630 155 C668 155 680 190 716 190" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a12m)"/>
+<path d="M630 335 C668 335 680 230 716 230" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a12m)"/>
+<defs><marker id="a12m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#8ba7a3"/></marker></defs>
+</svg>

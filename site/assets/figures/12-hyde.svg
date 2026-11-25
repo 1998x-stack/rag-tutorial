@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 380" role="img" aria-labelledby="t12hyde d12hyde">
+<title id="t12hyde">HyDE：先让模型生成一段假答案，再用它去检索</title>
+<desc id="t12hyde">直接检索把原始查询编码成向量；HyDE 先用语言模型根据查询生成一段假设性文档，把这个假设文档编码成向量，再用它去检索真实文档，因此查询向量更接近答案文档的向量。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:16px;font-weight:700}.s{font-size:14px;fill:#4c686c}.a{font-size:14px;font-weight:720;fill:#147f80}.o{font-size:14px;font-weight:720;fill:#d06d4d}</style>
+<rect x="0" y="0" width="1080" height="380" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">直接检索 vs HyDE：向量从哪里来</text>
+<text x="46" y="92" class="l">直接检索</text>
+<rect x="46" y="106" width="150" height="46" rx="9" fill="#e2f1ee" stroke="#7db6a9"/><text x="62" y="135" class="s">查询 Q</text>
+<rect x="240" y="106" width="150" height="46" rx="9" fill="#fff" stroke="#ceddd8"/><text x="256" y="135" class="s">编码器</text>
+<rect x="434" y="106" width="150" height="46" rx="9" fill="#ede9f7" stroke="#7461ba"/><text x="450" y="135" class="s">向量 v_Q</text>
+<rect x="628" y="106" width="410" height="46" rx="9" fill="#eef7f5" stroke="#147f80"/><text x="646" y="135" class="s">与文档向量比对（Q 与答案措辞可能不同）</text>
+<path d="M196 129 L240 129 M390 129 L434 129 M584 129 L628 129" fill="none" stroke="#8ba7a3" stroke-width="1.8"/>
+<text x="46" y="212" class="o">HyDE</text>
+<rect x="46" y="226" width="150" height="46" rx="9" fill="#e2f1ee" stroke="#7db6a9"/><text x="62" y="255" class="s">查询 Q</text>
+<rect x="240" y="226" width="150" height="46" rx="9" fill="#fff1e8" stroke="#d06d4d"/><text x="256" y="255" class="s">LLM 生成 H</text>
+<rect x="434" y="226" width="150" height="46" rx="9" fill="#fff" stroke="#ceddd8"/><text x="450" y="255" class="s">编码器</text>
+<rect x="628" y="226" width="150" height="46" rx="9" fill="#ede9f7" stroke="#7461ba"/><text x="644" y="255" class="s">向量 v_H</text>
+<rect x="818" y="226" width="220" height="46" rx="9" fill="#eef7f5" stroke="#147f80"/><text x="836" y="255" class="s">用 v_H 检索真实文档</text>
+<path d="M196 249 L240 249 M390 249 L434 249 M584 249 L628 249 M778 249 L818 249" fill="none" stroke="#8ba7a3" stroke-width="1.8"/>
+<text x="38" y="334" class="s">HyDE 的假设：答案措辞与答案文档的向量，比“问题措辞”更接近。</text>
+<text x="38" y="360" class="s">代价是一次 LLM 调用；假设文档可能含错误，可能把错误信息带入检索。细节见正文与原始论文。</text>
+</svg>
