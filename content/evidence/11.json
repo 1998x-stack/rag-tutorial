@@ -1,0 +1,24 @@
+{
+  "chapter": 11,
+  "title": "重排序：交叉编码器与两阶段精排",
+  "sources": [
+    {"id": "bert_rerank", "url": "https://arxiv.org/abs/1901.04085", "kind": "primary_paper"},
+    {"id": "sbert", "url": "https://arxiv.org/abs/1908.10084", "kind": "primary_paper"},
+    {"id": "colbert", "url": "https://arxiv.org/abs/2004.12832", "kind": "primary_paper"},
+    {"id": "bge", "url": "https://github.com/FlagOpen/FlagEmbedding", "kind": "official_repo"}
+  ],
+  "claims": [
+    {"claim": "交叉编码器把查询与文档拼接后共同编码，输出一个相关性分数", "source": "bert_rerank", "scope": "paper model", "limitations": "分数口径与训练数据相关"},
+    {"claim": "重排序只改变候选顺序，不改变候选集合；漏召回无法靠重排补救", "source": "bert_rerank", "scope": "method property", "limitations": "提升依赖第一阶段召回质量"},
+    {"claim": "双编码器分别编码、文档向量可预计算；交叉编码器不可预计算，每个候选一次前向", "source": "sbert", "scope": "paper method", "limitations": "“交叉”指拼接共同编码，不是权重共享"},
+    {"claim": "批处理降低墙上延迟但不减少总计算量", "source": "engineering", "scope": "实现性质", "limitations": "batch 大小受显存限制，需实测"},
+    {"claim": "晚交互（ColBERT）是介于双编码器与交叉编码器之间的替代路线", "source": "colbert", "scope": "paper method", "limitations": "存储与计算更重，与交叉编码器不是同一方法"},
+    {"claim": "重排模型训练目标通常是相关性，而非“能否帮助回答”的有用性", "source": "engineering", "scope": "实践观察", "limitations": "属常见现象，非特定基准测量"},
+    {"claim": "BGE 重排模型为 BAAI 维护的开源交叉编码器", "source": "bge", "scope": "official repo", "limitations": "版本、上下文长度与许可以官方仓库为准"}
+  ],
+  "toy_demo": "标准库手写特征（字符重合 + 关键实体同时出现）演示重排改变顺序；不是神经网络交叉编码器",
+  "unverified_metrics": [
+    "N=100、K=5：常见工程经验区间，非论文结论",
+    "原页中的 A100 毫秒级延迟表、“交叉编码器比双编码器高 5–15% MRR”、BGE 上下文长度等数字无可靠出处，已删除，未在本篇复述"
+  ]
+}

@@ -58,6 +58,26 @@ document.addEventListener('DOMContentLoaded', () => {
       return '余弦排序：' + by(cos) + '；点积排序：' + by(dot) +
         '。点积把长向量 D2 抬到最前。数值来自人为指定的二维向量，不是模型输出。';
     },
+    'toy-rerank': () => {
+      const Q = '苹果公司2026年财务状况';
+      const coarse = [
+        '苹果公司的发展历史可以追溯到1976年',
+        '2026年全球科技公司财务概览',
+        '苹果公司2026年财务报告与利润披露',
+        '香蕉的种植与营养价值'
+      ];
+      const overlap = d => {
+        const qs = new Set(Q);
+        let n = 0;
+        for (const ch of qs) if (d.includes(ch)) n++;
+        return n / qs.size;
+      };
+      const hasAll = d => (d.includes('苹果') && d.includes('财务')) ? 1 : 0;
+      const score = d => overlap(d) + hasAll(d);
+      const ranked = [...coarse].sort((a, b) => score(b) - score(a));
+      return '粗排把「' + coarse[0] + '」放在首位；玩具重排后第一名是「' + ranked[0] +
+        '」。重排只改变顺序，不改变候选集合；这是手写特征的演示，不是神经网络交叉编码器。';
+    },
     'rrf-fusion': () => {
       const k = 60;
       const bm25 = ['doc_A', 'doc_B', 'doc_C'];

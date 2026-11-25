@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 440" role="img" aria-labelledby="t11cross d11cross">
+<title id="t11cross">双编码器与交叉编码器的结构差异</title>
+<desc id="t11cross">双编码器把查询与文档分别编码成向量再点积，文档向量可预计算；交叉编码器把查询与文档拼接后送入同一个编码器输出一个分数，每个候选都要一次前向计算，无法预计算。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:16px;font-weight:700}.s{font-size:14px;fill:#4c686c}.a{font-size:14px;font-weight:720;fill:#147f80}.o{font-size:14px;font-weight:720;fill:#d06d4d}</style>
+<rect x="0" y="0" width="1080" height="440" rx="22" fill="#f7faf8"/>
+<text x="38" y="44" class="k">同一对 (q, d)：分开编码，还是拼在一起编码？</text>
+<text x="46" y="86" class="a">双编码器（检索阶段）</text>
+<rect x="46" y="102" width="140" height="46" rx="9" fill="#eef7f5" stroke="#147f80"/><text x="62" y="131" class="s">查询 q</text>
+<rect x="46" y="164" width="140" height="46" rx="9" fill="#eef7f5" stroke="#147f80"/><text x="62" y="193" class="s">文档 d</text>
+<rect x="250" y="102" width="150" height="46" rx="9" fill="#fff" stroke="#ceddd8"/><text x="266" y="131" class="s">编码器 E_Q</text>
+<rect x="250" y="164" width="150" height="46" rx="9" fill="#fff" stroke="#ceddd8"/><text x="266" y="193" class="s">编码器 E_P</text>
+<rect x="470" y="102" width="150" height="46" rx="9" fill="#ede9f7" stroke="#7461ba"/><text x="486" y="131" class="s">向量 q</text>
+<rect x="470" y="164" width="150" height="46" rx="9" fill="#ede9f7" stroke="#7461ba"/><text x="486" y="193" class="s">向量 p</text>
+<rect x="700" y="120" width="330" height="74" rx="11" fill="#e2f1ee" stroke="#7db6a9"/>
+<text x="720" y="150" class="l">sim = q · p</text>
+<text x="720" y="176" class="s">d 的向量可离线预算，在线只算 1 次查询</text>
+<path d="M186 125 L250 125 M186 187 L250 187 M400 125 L470 125 M400 187 L470 187" fill="none" stroke="#8ba7a3" stroke-width="1.8"/>
+<path d="M620 125 L700 150 M620 187 L700 164" fill="none" stroke="#8ba7a3" stroke-width="1.8"/>
+<text x="46" y="262" class="o">交叉编码器（重排阶段）</text>
+<rect x="46" y="278" width="240" height="52" rx="9" fill="#fff1e8" stroke="#d06d4d"/><text x="62" y="310" class="s">[ q ； d ] 拼接输入</text>
+<rect x="330" y="278" width="210" height="52" rx="9" fill="#fff" stroke="#ceddd8"/><text x="346" y="310" class="s">同一编码器 + 注意力</text>
+<rect x="584" y="278" width="180" height="52" rx="9" fill="#ede9f7" stroke="#7461ba"/><text x="600" y="310" class="s">一个相关性分数</text>
+<path d="M286 304 L330 304 M540 304 L584 304" fill="none" stroke="#8ba7a3" stroke-width="1.8"/>
+<text x="800" y="300" class="s">查询与文档在此</text>
+<text x="800" y="322" class="s">发生交叉注意力</text>
+<text x="38" y="392" class="s">每个候选都要一次前向：N 个候选 = N 次计算，因此交叉编码器只用于对少量候选精排。</text>
+<text x="38" y="418" class="s">两座塔权重是否共享是设计选择；“交叉”指的是查询与文档拼接后共同编码，不是权重共享。</text>
+</svg>
