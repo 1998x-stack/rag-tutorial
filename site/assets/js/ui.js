@@ -67,10 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     'ann-recall': () => {
       const total = 400;
-      const rows = [[1, 62, 0.46], [2, 128, 0.71], [4, 246, 0.88], [8, 400, 1.0]];
-      return '玩具 IVF（教学示意，非实测）：' + rows.map(r =>
+      const rows = [[1, 100, 1.0], [2, 122, 1.0], [4, 232, 1.0], [8, 400, 1.0]];
+      return '玩具 IVF（与本页 Python 示例相同的 seed=7 单查询）：' + rows.map(r =>
         'nprobe=' + r[0] + ' → 扫描 ' + r[1] + '/' + total + '，recall@5≈' + r[2].toFixed(2)
-      ).join('；') + '。nprobe 增大时扫描量与召回同时上升，实际以你的数据实测为准。';
+      ).join('；') + '。扫描量增大，但这个查询的召回已饱和；实际以你的数据实测为准。';
     },
     'vector-geometry': () => {
       const a = [0.9, 0.1], b = [3, 3];
