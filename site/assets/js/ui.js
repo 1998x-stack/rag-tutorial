@@ -58,6 +58,20 @@ document.addEventListener('DOMContentLoaded', () => {
       return '余弦排序：' + by(cos) + '；点积排序：' + by(dot) +
         '。点积把长向量 D2 抬到最前。数值来自人为指定的二维向量，不是模型输出。';
     },
+    'rrf-fusion': () => {
+      const k = 60;
+      const bm25 = ['doc_A', 'doc_B', 'doc_C'];
+      const dense = ['doc_B', 'doc_D', 'doc_A'];
+      const scores = {};
+      [bm25, dense].forEach(list => list.forEach((id, i) => {
+        scores[id] = (scores[id] || 0) + 1 / (k + i + 1);
+      }));
+      const ordered = Object.keys(scores).sort((a, b) =>
+        scores[b] - scores[a] || (a < b ? -1 : 1));
+      return 'RRF（k=60，名次从 1 开始）：' + ordered.map(id =>
+        id + '=' + scores[id].toFixed(4)).join('，') +
+        '。doc_B 在向量路第 1、BM25 路第 2，故最高；只在单路出现的 doc_C、doc_D 仍保留。';
+    },
     'bm25-saturation': () => {
       const k1 = 1.2;
       const f = t => t * (k1 + 1) / (t + k1);

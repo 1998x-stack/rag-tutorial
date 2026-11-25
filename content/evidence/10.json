@@ -1,0 +1,24 @@
+{
+  "chapter": 10,
+  "title": "混合检索：融合稀疏与稠密",
+  "sources": [
+    {"id": "rrf", "url": "https://doi.org/10.1145/1571941.1572114", "kind": "primary_paper"},
+    {"id": "es_rrf", "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html", "kind": "official_docs"},
+    {"id": "bm25", "url": "https://www.staff.city.ac.uk/~sbrp622/papers/foundations_bm25_review.pdf", "kind": "primary_paper"},
+    {"id": "dpr", "url": "https://aclanthology.org/2020.emnlp-main.550/", "kind": "primary_paper"}
+  ],
+  "claims": [
+    {"claim": "RRF 只依据各路名次取倒数后求和，不依赖分数刻度，因此无需分数归一化", "source": "rrf", "scope": "paper method", "limitations": "丢弃分数差别的信息；对名次口径敏感"},
+    {"claim": "RRF 的平滑常数 k 默认取 60", "source": "rrf", "scope": "paper default / engineering default", "limitations": "60 是经验默认值，不是最优保证；原文与其他实现可能给出不同建议"},
+    {"claim": "只在单路出现的文档仍获得 1/(k+rank) 分数，不会被直接丢弃", "source": "rrf", "scope": "数学性质", "limitations": "该项大小取决于 k 与名次"},
+    {"claim": "加权求和需要先做分数归一化，因为 BM25 与余弦相似度刻度不同", "source": "bm25", "scope": "engineering reasoning", "limitations": "归一化方式会影响结果"},
+    {"claim": "生产系统可并行接入向量、BM25、图检索与结构化查询多路候选", "source": "es_rrf", "scope": "engineering practice", "limitations": "路数越多，去重与打分口径越关键"},
+    {"claim": "稠密检索路的双编码器可离线预计算文档向量", "source": "dpr", "scope": "paper model", "limitations": "查询端与文档端权重不必共享"}
+  ],
+  "toy_demo": "标准库手算 RRF：两路各三名，k=60，名次从 1 开始；分数为公式手算，非数据集评测",
+  "unverified_metrics": [
+    "图中 doc_B=0.0325、doc_A=0.0323、doc_D=0.0161、doc_C=0.0159：按 1/(k+名次) 手算的教学示意，不是任何基准上的测量",
+    "Top-50～Top-200 候选深度：工程经验区间，非论文结论",
+    "原页曾出现的“Google 2022 论文 MRR 提升 15–20% / 30%”无可靠出处，已删除，未在本篇复述"
+  ]
+}

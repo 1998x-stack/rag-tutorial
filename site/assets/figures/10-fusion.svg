@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 420" role="img" aria-labelledby="t10fuse d10fuse">
+<title id="t10fuse">同一查询并行进入稀疏与稠密检索，再融合排序</title>
+<desc id="d10fuse">查询同时送入 BM25 稀疏检索与向量稠密检索；两路各自返回一个有序候选列表；融合算法把两个列表合并成一个最终排序，输出给下游。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:16px;font-weight:700}.s{font-size:14px;fill:#4c686c}.o{fill:#d06d4d}</style>
+<rect x="0" y="0" width="1080" height="420" rx="22" fill="#f7faf8"/>
+<text x="38" y="48" class="k">一次查询 → 两路召回 → 一个融合排序</text>
+<rect x="36" y="180" width="170" height="72" rx="12" fill="#e2f1ee" stroke="#7db6a9"/>
+<text x="66" y="222" class="l">查询 Q</text>
+<rect x="270" y="86" width="200" height="78" rx="11" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="288" y="120" class="l">BM25 稀疏检索</text>
+<text x="288" y="144" class="s">按词项精确匹配</text>
+<rect x="270" y="258" width="200" height="78" rx="11" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/>
+<text x="288" y="292" class="l">稠密向量检索</text>
+<text x="288" y="316" class="s">按语义相似度</text>
+<rect x="520" y="86" width="200" height="78" rx="11" fill="#fff" stroke="#ceddd8" stroke-width="1.5"/>
+<text x="538" y="120" class="l">候选列表 A</text>
+<text x="538" y="144" class="s">按 BM25 分数排序</text>
+<rect x="520" y="258" width="200" height="78" rx="11" fill="#fff" stroke="#ceddd8" stroke-width="1.5"/>
+<text x="538" y="292" class="l">候选列表 B</text>
+<text x="538" y="316" class="s">按相似度排序</text>
+<rect x="790" y="168" width="250" height="104" rx="12" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="810" y="206" class="l o">融合排序 RRF</text>
+<text x="810" y="232" class="s">只用名次，不用原始分数</text>
+<text x="810" y="256" class="s">→ 输出最终 Top-K 给下游</text>
+<path d="M206 216 L270 125" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a10f1)"/>
+<path d="M206 216 L270 297" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a10f1)"/>
+<path d="M470 125 L520 125" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a10f1)"/>
+<path d="M470 297 L520 297" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a10f1)"/>
+<path d="M720 125 L790 196" fill="none" stroke="#7461ba" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#a10f2)"/>
+<path d="M720 297 L790 244" fill="none" stroke="#7461ba" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#a10f2)"/>
+<defs>
+<marker id="a10f1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#8ba7a3"/></marker>
+<marker id="a10f2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#7461ba"/></marker>
+</defs>
+<text x="38" y="396" class="s">两路候选各自排序；融合把它们合成一个列表，而不是简单拼接</text>
+</svg>
