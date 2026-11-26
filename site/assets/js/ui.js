@@ -25,6 +25,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const demo = {
+    'citation-check': () => {
+      const N = 3;
+      const answer = '可并行计算[1]。位置编码提供顺序信息[2]。速度快了 5 倍[5]。';
+      const cited = (answer.match(/\[(\d+)\]/g) || []).map(s => Number(s.slice(1, -1)));
+      const valid = cited.filter(n => n >= 1 && n <= N);
+      const invalid = cited.filter(n => n < 1 || n > N);
+      return '出现编号 [' + cited.join(', ') + ']：合法 [' + valid.join(', ') +
+        ']，越界 [' + invalid.join(', ') + ']（资料只给了 ' + N +
+        ' 条）。校验器只查编号合法性，不判断内容是否被资料支持。';
+    },
     boundary: () => '去掉检索来源后，答案无可验证依据；加入版本与出处后，才可以核对「2026版·7天」的声明。RAG 仍可能误引，不能保证事实正确。',
     budget: () => {
       const W = 8192, S = 500, O = 1500, Q = 300;

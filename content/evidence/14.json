@@ -1,0 +1,26 @@
+{
+  "chapter": 14,
+  "title": "生成与引用溯源：让回答有据可查",
+  "sources": [
+    {"id": "rag_orig", "url": "https://arxiv.org/abs/2005.11401", "kind": "primary_paper"},
+    {"id": "alce", "url": "https://arxiv.org/abs/2305.14627", "kind": "primary_paper"},
+    {"id": "ais", "url": "https://arxiv.org/abs/2112.12870", "kind": "primary_paper"},
+    {"id": "self_rag", "url": "https://arxiv.org/abs/2310.11511", "kind": "primary_paper"}
+  ],
+  "claims": [
+    {"claim": "检索增强生成把生成条件在检索到的段落上，并提到可追溯到来源文档", "source": "rag_orig", "scope": "paper framework", "limitations": "原始工作面向知识密集任务，未解决生成后的自动引用校验"},
+    {"claim": "带温度的 softmax 中温度越低分布越尖、越高越平", "source": "engineering", "scope": "数学机制", "limitations": "低温度减少随机性但不消除幻觉"},
+    {"claim": "面向 RAG 的调用常采用较低温度与 top_p，并设输出上限", "source": "engineering", "scope": "工程惯例", "limitations": "具体取值依模型与任务，非普遍定律，应实测"},
+    {"claim": "引用可用内联编号或结构化字段表达，二者可并用", "source": "alce", "scope": "paper method / engineering", "limitations": "格式正确不代表引用成立"},
+    {"claim": "引用编号校验是句法级检查：每个 [n] 应落在 1..N 内", "source": "engineering", "scope": "工程推理", "limitations": "编号合法不代表内容被资料支持"},
+    {"claim": "归因核查（NLI）判断生成内容是否被其来源支持：蕴含=支持，中立/矛盾=不支持", "source": "ais", "scope": "paper method", "limitations": "NLI 模型本身有假阳/假阴，只能给近似可审计信号"},
+    {"claim": "ALCE 让模型生成带引用文本并自动评估引用质量", "source": "alce", "scope": "paper method", "limitations": "自动指标依赖其标注接口与数据集"},
+    {"claim": "Self-RAG 让模型生成时输出是否被支持的自我反思标记", "source": "self_rag", "scope": "paper method", "limitations": "需要专门训练的模型与反思 token"}
+  ],
+  "toy_demo": "标准库正则扫描回答中的 [n]，分出 1..N 内的合法编号与越界编号；仅做句法校验，不判断内容是否被资料支持",
+  "unverified_metrics": [
+    "原页“temperature 0.1-0.3 / top_p 0.1-0.3 / max_tokens 500-1500”等数值无可靠出处，已改写为工程取向而非固定推荐值，并标注为惯例",
+    "原页“prompt 中约束出现三次”“NLI 验证每个事实”等经验说法已改为机制描述，未作为量化结论",
+    "本页不含任何‘提升百分之几’的数字；引用精度/召回与忠实性需在标注集上实测"
+  ]
+}

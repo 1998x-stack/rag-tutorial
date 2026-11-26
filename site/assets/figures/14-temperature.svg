@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 380" role="img" aria-labelledby="t14temp d14temp">
+<title id="t14temp">同一组 logits 在不同温度下的 softmax 概率分布</title>
+<desc id="d14temp">对固定的三个 logit（3、2、1），温度越低分布越尖，最高分词的概率越大；温度越高分布越平，低分词也能获得相当概率。数值由本图自行计算，用于说明公式，不是模型输出统计。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:15px;font-weight:700}.s{font-size:13.5px;fill:#4c686c}.a{font-size:13.5px;font-weight:720;fill:#147f80}.b{font-size:13px;font-weight:700;fill:#fff}</style>
+<rect x="0" y="0" width="1080" height="380" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">同一组 logits（3, 2, 1），温度改变分布形状</text>
+<line x1="70" y1="300" x2="1010" y2="300" stroke="#8ba7a3" stroke-width="1.6"/>
+<line x1="70" y1="300" x2="70" y2="100" stroke="#8ba7a3" stroke-width="1.6"/>
+<text x="30" y="205" class="s" transform="rotate(-90 30 205)">采样概率</text>
+<g><rect x="120" y="139" width="70" height="161" fill="#147f80"/><text x="120" y="132" class="b" fill="#0f5f60">0.87</text><rect x="195" y="279" width="70" height="21" fill="#6cc4bd"/><rect x="270" y="297" width="70" height="3" fill="#a9dfd9"/><text x="150" y="326" class="l">T = 0.5</text><text x="122" y="346" class="s">高分主导，尖</text></g>
+<g><rect x="420" y="177" width="70" height="123" fill="#147f80"/><text x="420" y="170" class="b" fill="#0f5f60">0.66</text><rect x="495" y="255" width="70" height="45" fill="#6cc4bd"/><rect x="570" y="283" width="70" height="17" fill="#a9dfd9"/><text x="450" y="326" class="l">T = 1.0</text><text x="422" y="346" class="s">中等分散</text></g>
+<g><rect x="720" y="206" width="70" height="94" fill="#147f80"/><text x="720" y="199" class="b" fill="#0f5f60">0.51</text><rect x="795" y="243" width="70" height="57" fill="#6cc4bd"/><text x="795" y="236" class="b" fill="#0f5f60">0.31</text><rect x="870" y="266" width="70" height="34" fill="#a9dfd9"/><text x="870" y="259" class="b" fill="#0f5f60">0.19</text><text x="750" y="326" class="l">T = 2.0</text><text x="722" y="346" class="s">趋于平坦，多样</text></g>
+<text x="38" y="374" class="s">柱高由 p_i = exp(z_i/T) / Σ exp(z_j/T) 对本图给定的 logits 计算得到；不同模型的真实分布不同，此处仅用于说明公式。</text>
+</svg>
