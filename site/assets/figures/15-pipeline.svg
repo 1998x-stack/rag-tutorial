@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 420" role="img" aria-labelledby="t15pipe d15pipe">
+<title id="t15pipe">把回答拆成原子声明后逐条核验并聚合支持率的管线</title>
+<desc id="d15pipe">回答先被拆成若干原子声明，每条声明分别检索证据并做 NLI 判定，最后把被支持的声明数除以总声明数得到支持率，据此决定放行或标记。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:14.5px;font-weight:700}.s{font-size:12.5px;fill:#4c686c}.a{font-size:12.5px;font-weight:720;fill:#147f80}.o{font-size:12.5px;font-weight:720;fill:#d06d4d}</style>
+<rect x="0" y="0" width="1080" height="420" rx="22" fill="#f7faf8"/>
+<text x="38" y="44" class="k">先拆小再核验：声明级管线</text>
+<rect x="40" y="140" width="170" height="92" rx="11" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="56" y="174" class="l o">回答</text><text x="56" y="198" class="s">含多条事实</text>
+<rect x="255" y="140" width="180" height="92" rx="11" fill="#fff" stroke="#ceddd8" stroke-width="1.5"/>
+<text x="271" y="174" class="l">拆分原子声明</text><text x="271" y="198" class="s">c1 / c2 / c3</text>
+<rect x="480" y="140" width="170" height="92" rx="11" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="496" y="174" class="l">逐条检索证据</text><text x="496" y="198" class="s">每条找最近段落</text>
+<rect x="695" y="140" width="170" height="92" rx="11" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/>
+<text x="711" y="174" class="l">逐条 NLI 判定</text><text x="711" y="198" class="s">蕴含 / 中立 / 矛盾</text>
+<rect x="910" y="140" width="130" height="92" rx="11" fill="#fff" stroke="#147f80" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="924" y="174" class="l a">聚合支持率</text><text x="924" y="198" class="s">支持/总数</text>
+<path d="M210 186 L255 186" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a15p)"/>
+<path d="M435 186 L480 186" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a15p)"/>
+<path d="M650 186 L695 186" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a15p)"/>
+<path d="M865 186 L910 186" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a15p)"/>
+<text x="40" y="286" class="s">支持率低于阈值 → 标记或重写；任一声明被判定“矛盾”时，整体应被判为可疑。</text>
+<text x="40" y="312" class="s">拆分越细，越能定位到具体哪句有问题；代价是判定次数变多。</text>
+<text x="40" y="352" class="s">支持率 = 被支持的声明数 / 总声明数（一种常见聚合，不是唯一公式）。</text>
+<text x="40" y="378" class="s">管线为机制示意；拆分、检索与判定都可换成不同实现。</text>
+<defs><marker id="a15p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#8ba7a3"/></marker></defs>
+</svg>

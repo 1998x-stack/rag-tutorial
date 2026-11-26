@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 400" role="img" aria-labelledby="t15tr d15tr">
+<title id="t15tr">幻觉检测阈值与漏检率、误拒率之间的权衡关系</title>
+<desc id="d15tr">随判定阈值升高，漏检率下降而误拒率上升，两条曲线相交；阈值过松则漏检多，过严则系统频繁拒绝回答、可用性下降，合理阈值应在自己的评估集上选。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:15px;font-weight:700}.s{font-size:13px;fill:#4c686c}.a{font-size:13px;font-weight:720;fill:#d06d4d}.o{font-size:13px;font-weight:720;fill:#7461ba}</style>
+<rect x="0" y="0" width="1080" height="400" rx="22" fill="#f7faf8"/>
+<text x="38" y="44" class="k">阈值越高越保守，但误拒也会变多</text>
+<line x1="110" y1="320" x2="640" y2="320" stroke="#8ba7a3" stroke-width="1.6"/>
+<line x1="110" y1="320" x2="110" y2="110" stroke="#8ba7a3" stroke-width="1.6"/>
+<text x="250" y="356" class="s">判定阈值（低 → 高）</text>
+<text x="40" y="215" class="s" transform="rotate(-90 40 215)">错误率</text>
+<polyline points="110,130 210,165 310,200 410,235 510,265 610,292" fill="none" stroke="#d06d4d" stroke-width="2.8"/>
+<polyline points="110,290 210,265 310,230 410,200 510,165 610,130" fill="none" stroke="#7461ba" stroke-width="2.8"/>
+<circle cx="360" cy="215" r="5" fill="#203035"/>
+<text x="300" y="243" class="s">交点：需在评估集上选</text>
+<text x="120" y="122" class="a">漏检率（风险）</text>
+<text x="520" y="300" class="s" fill="#5a48a0">误拒率（可用性）</text>
+<text x="120" y="340" class="s">过松</text>
+<text x="580" y="340" class="s">过严</text>
+<rect x="720" y="120" width="320" height="170" rx="12" fill="#fff" stroke="#ceddd8" stroke-width="1.5"/>
+<text x="740" y="154" class="l">两个错误方向</text>
+<text x="740" y="184" class="s">漏检：把幻觉当可信 → 风险上升</text>
+<text x="740" y="210" class="s">误拒：把正确当不可信 → 可用性降</text>
+<text x="740" y="244" class="s">只调一个阈值无法同时降低两者，</text>
+<text x="740" y="268" class="s">必须结合任务风险与评估集权衡。</text>
+<text x="38" y="388" class="s">两条曲线为定性示意，不是某个系统的实测曲线；实际形状与具体检测器、任务和标注集有关。</text>
+</svg>

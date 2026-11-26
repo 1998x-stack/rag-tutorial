@@ -1,0 +1,26 @@
+{
+  "chapter": 15,
+  "title": "幻觉检测与事实核查：生成之后的核验",
+  "sources": [
+    {"id": "true", "url": "https://arxiv.org/abs/2204.04991", "kind": "primary_paper"},
+    {"id": "summac", "url": "https://arxiv.org/abs/2111.09525", "kind": "primary_paper"},
+    {"id": "factscore", "url": "https://arxiv.org/abs/2305.14251", "kind": "primary_paper"},
+    {"id": "selfcheckgpt", "url": "https://arxiv.org/abs/2303.08896", "kind": "primary_paper"},
+    {"id": "ragtruth", "url": "https://arxiv.org/abs/2401.00396", "kind": "primary_paper"},
+    {"id": "siren", "url": "https://arxiv.org/abs/2309.01219", "kind": "survey"}
+  ],
+  "claims": [
+    {"claim": "RAG 提高忠实性但不保证事实性；资料过时/残缺时忠实回答仍可能不符事实", "source": "siren", "scope": "概念区分 / 工程推理", "limitations": "忠实性与事实性是不同维度的度量"},
+    {"claim": "NLI 可用『前提=资料、假设=声明』判断蕴含/中立/矛盾，只有蕴含视为支持", "source": "true", "scope": "paper method", "limitations": "NLI 有假阳/假阴，长前提与复杂否定会降低准确率"},
+    {"claim": "现成 NLI 在长前提上会退化，需先拆句对再聚合", "source": "summac", "scope": "paper finding", "limitations": "聚合方式影响结果"},
+    {"claim": "把长文本拆成原子事实逐条验证，用被支持事实占比度量事实精确度", "source": "factscore", "scope": "paper method", "limitations": "依赖原子事实拆分的质量"},
+    {"claim": "SelfCheckGPT 用多次采样的一致性检测幻觉，面向无参考场景的随机型幻觉", "source": "selfcheckgpt", "scope": "paper method", "limitations": "对系统性错误无效；需多次生成与比较，开销大"},
+    {"claim": "RAGTruth 是面向 RAG 的幻觉标注语料", "source": "ragtruth", "scope": "dataset", "limitations": "数据规模与领域有限，不能代表所有场景"}
+  ],
+  "toy_demo": "标准库正则把一段回答按句末标点与并列连接词切成原子声明；仅规则切分，非语义拆分，后续仍需 NLI/LLM 判定",
+  "unverified_metrics": [
+    "原页“2024 年 Anthropic 内部报告：15%-25% 生成内容含事实偏离”无公开出处，已删除",
+    "原页“NLI 阈值 0.7 / 高风险 0.85”“+200~500ms / +500~2000ms 等延迟”“false positive 超过 30%”等数字无可靠出处或依赖具体实现，已改为定性表述",
+    "本页不含任何百分比效果数字；漏检率、误拒率与延迟须在标注集与真实实现上实测"
+  ]
+}

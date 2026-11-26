@@ -25,6 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const demo = {
+    'claim-split': () => {
+      const answer = 'Transformer 的 self-attention 可以并行计算，且通过位置编码感知顺序。它的复杂度随序列长度平方增长。';
+      const parts = answer.split(/[。；;]|，且|，并|，以及/).map(s => s.trim()).filter(Boolean);
+      return '规则拆分出 ' + parts.length + ' 条声明：' + parts.map((c, i) => '声明' + (i + 1) + '：' + c).join('；') +
+        '。这是按标点/连接词的规则拆分，不是语义拆分，仍需 NLI 或 LLM 判定。';
+    },
     'citation-check': () => {
       const N = 3;
       const answer = '可并行计算[1]。位置编码提供顺序信息[2]。速度快了 5 倍[5]。';

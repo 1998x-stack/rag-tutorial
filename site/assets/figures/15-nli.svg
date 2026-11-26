@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 400" role="img" aria-labelledby="t15nli d15nli">
+<title id="t15nli">以资料为前提、回答为假设的 NLI 一致性判定链</title>
+<desc id="d15nli">把被引用的资料段落作为前提、模型生成的声明作为假设，送入 NLI 分类器，得到蕴含、中立、矛盾三种判定：蕴含视为支持，中立视为证据不足，矛盾视为冲突。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:15px;font-weight:700}.s{font-size:13px;fill:#4c686c}.a{font-size:13px;font-weight:720;fill:#147f80}.o{font-size:13px;font-weight:720;fill:#b8532f}</style>
+<rect x="0" y="0" width="1080" height="400" rx="22" fill="#f7faf8"/>
+<text x="38" y="44" class="k">前提（资料）+ 假设（声明）→ NLI → 三种判定</text>
+<rect x="40" y="118" width="300" height="74" rx="11" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="58" y="150" class="l">前提：被引用的资料段落</text><text x="58" y="172" class="s">premise</text>
+<rect x="40" y="228" width="300" height="74" rx="11" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="58" y="260" class="l o">假设：模型生成的声明</text><text x="58" y="282" class="s">hypothesis</text>
+<rect x="430" y="150" width="240" height="120" rx="11" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/>
+<text x="450" y="196" class="l">NLI 分类器</text><text x="450" y="222" class="s">p(E | premise, hyp)</text><text x="450" y="244" class="s">p(N | ·) · p(C | ·)</text>
+<path d="M340 155 L430 185" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a15n)"/>
+<path d="M340 265 L430 235" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a15n)"/>
+<path d="M670 200 L740 128" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a15n)"/>
+<path d="M670 210 L740 210" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a15n)"/>
+<path d="M670 220 L740 292" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a15n)"/>
+<rect x="740" y="96" width="300" height="66" rx="10" fill="#eef7f5" stroke="#147f80" stroke-width="1.6"/>
+<text x="758" y="128" class="l a">蕴含 E → 支持</text><text x="758" y="150" class="s">资料直接支持该声明</text>
+<rect x="740" y="177" width="300" height="66" rx="10" fill="#fff" stroke="#ceddd8" stroke-width="1.5"/>
+<text x="758" y="209" class="l">中立 N → 证据不足</text><text x="758" y="231" class="s">资料未提及，不能当结论</text>
+<rect x="740" y="258" width="300" height="66" rx="10" fill="#fff1e8" stroke="#d06d4d" stroke-width="1.6"/>
+<text x="758" y="290" class="l o">矛盾 C → 冲突</text><text x="758" y="312" class="s">资料与声明相抵</text>
+<text x="38" y="376" class="s">只有蕴含才算“被支持”；中立/矛盾都要标记。判定链为机制示意，具体输出取决于所用 NLI 模型。</text>
+<defs><marker id="a15n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#8ba7a3"/></marker></defs>
+</svg>
