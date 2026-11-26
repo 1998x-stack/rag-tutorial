@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 380" role="img" aria-labelledby="t25p d25p">
+<title id="t25p">可观测性三支柱：指标、追踪、日志共同支撑 RAG 的排查与告警</title>
+<desc id="d25p">指标是聚合的数值型信号，用来发现趋势与告警；追踪记录一次请求在各阶段的耗时与属性，用来定位瓶颈；日志是各组件的事件明细，用于深度排查。三者互补，缺一都会让排查变成猜测。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:15px;font-weight:720}.s{font-size:12px;fill:#4c686c}</style>
+<rect x="0" y="0" width="1080" height="380" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">三支柱各回答不同问题</text>
+<rect x="60" y="90" width="280" height="150" rx="14" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="82" y="128" class="l">指标 Metrics</text>
+<text x="82" y="156" class="s">延迟分位 / QPS / 错误率</text>
+<text x="82" y="180" class="s">召回率 / 结果条数 / token</text>
+<text x="82" y="212" class="s">回答“现在好不好？”——趋势与告警</text>
+<rect x="400" y="90" width="280" height="150" rx="14" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/>
+<text x="422" y="128" class="l">追踪 Traces</text>
+<text x="422" y="156" class="s">一次请求的分段耗时</text>
+<text x="422" y="180" class="s">各阶段的输入 / 输出属性</text>
+<text x="422" y="212" class="s">回答“哪里慢了？”——定位阶段</text>
+<rect x="740" y="90" width="280" height="150" rx="14" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="762" y="128" class="l">日志 Logs</text>
+<text x="762" y="156" class="s">各组件的事件明细</text>
+<text x="762" y="180" class="s">异常、重试、降级记录</text>
+<text x="762" y="212" class="s">回答“为什么？”——深度排查</text>
+<path d="M200 240 V282 M540 240 V282 M880 240 V282" stroke="#7f9a97" stroke-width="2.5" marker-end="url(#a25)"/>
+<rect x="330" y="286" width="420" height="56" rx="12" fill="#f0f6f3" stroke="#147f80" stroke-width="2"/>
+<text x="352" y="322" class="l">仪表盘 / 告警 / 回溯</text>
+<text x="60" y="372" class="s">OpenTelemetry 等标准可把三者关联到同一条 trace id 上，便于从一个指标跳到一个具体请求的明细。</text>
+<defs><marker id="a25" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#7f9a97"/></marker></defs>
+</svg>

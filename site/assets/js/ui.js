@@ -92,6 +92,14 @@ document.addEventListener('DOMContentLoaded', () => {
       return rows.join('；') +
         '。曲线为人为设定（recall=1-exp(-ef/80)），不是任何系统的实测数据。';
     },
+    'trace-bottleneck': () => {
+      const spans = [['查询改写', 210], ['嵌入', 90], ['检索', 25], ['重排', 130], ['生成', 1200]];
+      const total = spans.reduce((s, kv) => s + kv[1], 0);
+      const rows = spans.map(([n, ms]) => n + '=' + (ms / total * 100).toFixed(1) + '%');
+      const slow = spans.reduce((a, b) => b[1] > a[1] ? b : a);
+      return '各阶段占比：' + rows.join('，') + '；最慢阶段：' + slow[0] + '（' +
+        (slow[1] / total * 100).toFixed(1) + '%）。耗时是人为指定，不是实测。';
+    },
     'clearance-filter': () => {
       const LEVELS = ['public', 'internal', 'confidential', 'secret'];
       const docs = [['c1', 'public'], ['c2', 'internal'], ['c3', 'confidential']];

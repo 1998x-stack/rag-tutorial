@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 380" role="img" aria-labelledby="t25t d25t">
+<title id="t25t">一次 RAG 请求的追踪瀑布：把总耗时拆到查询改写、嵌入、检索、重排、生成各阶段</title>
+<desc id="d25t">一条请求被拆成若干阶段，每个阶段是一段 span，横向位置表示起始时间，宽度表示该阶段耗时。生成阶段通常占用最大一段，但必须用真实追踪确认，而非假定。条宽为示意，不是实测数据。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:13px;font-weight:720}.s{font-size:12px;fill:#4c686c}</style>
+<rect x="0" y="0" width="1080" height="380" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">用一条 trace 看清“慢在哪一段”</text>
+<rect x="200" y="96" width="120" height="30" rx="6" fill="#ede9f7"/><text x="90" y="117" class="l">查询改写</text>
+<rect x="320" y="140" width="90" height="30" rx="6" fill="#eef7f5"/><text x="90" y="161" class="l">嵌入编码</text>
+<rect x="410" y="184" width="70" height="30" rx="6" fill="#eef7f5"/><text x="90" y="205" class="l">向量检索</text>
+<rect x="480" y="228" width="110" height="30" rx="6" fill="#eef7f5"/><text x="90" y="249" class="l">重排</text>
+<rect x="590" y="272" width="330" height="30" rx="6" fill="#fff1e8"/><text x="90" y="293" class="l">生成</text>
+<path d="M200 86 V316 M920 86 V316" stroke="#9db9b6" stroke-width="1.5" stroke-dasharray="4 4"/>
+<text x="200" y="80" class="s">开始</text><text x="880" y="80" class="s">结束</text>
+<text x="620" y="322" class="s">条宽为示意，非实测</text>
+<text x="60" y="360" class="s">每段 span 记录耗时的同时，也应带上语义属性：结果条数、使用模型、索引版本——排查时才能区分“没检到”和“检到了没用好”。</text>
+</svg>

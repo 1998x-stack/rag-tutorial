@@ -1,0 +1,26 @@
+{
+  "chapter": 25,
+  "title": "RAG 调试与可观测性：从“靠猜”到定位到阶段",
+  "sources": [
+    {"id": "otel", "url": "https://opentelemetry.io/docs/", "kind": "official_docs"},
+    {"id": "survey", "url": "https://arxiv.org/abs/2312.10997", "kind": "survey"},
+    {"id": "ragas", "url": "https://arxiv.org/abs/2309.15217", "kind": "primary_paper"},
+    {"id": "beir", "url": "https://arxiv.org/abs/2104.08663", "kind": "primary_paper"}
+  ],
+  "claims": [
+    {"claim": "RAG 是多阶段流水线，任一阶段静默失败都可能只表现为“答案变差”", "source": "engineering", "scope": "工程推理", "limitations": "无"},
+    {"claim": "检索返回空结果时调用仍可能“成功”（无报错），需监控检索结果条数等语义信号", "source": "engineering", "scope": "工程推理", "limitations": "无"},
+    {"claim": "可观测性可拆为指标、追踪、日志三支柱，各回答不同问题", "source": "otel", "scope": "official docs", "limitations": "术语与实现以官方文档为准"},
+    {"claim": "追踪可用 span 表示各阶段耗时，并携带语义属性（结果条数、模型、索引版本）", "source": "otel", "scope": "official docs", "limitations": "无"},
+    {"claim": "追踪的语义属性有助于区分“没检到”与“检到了没用好”", "source": "engineering", "scope": "工程推理", "limitations": "无"},
+    {"claim": "质量信号可用固定基准集定期评测（RAGAS / BEIR 等方法）并与基线对比", "source": "ragas", "scope": "paper method", "limitations": "指标须在同一标注集与版本下比较"},
+    {"claim": "告警阈值是工程约定，依业务容忍度设定", "source": "engineering", "scope": "engineering", "limitations": "无"},
+    {"claim": "全量存 trace 成本高，常用采样 + 异常全量保留", "source": "engineering", "scope": "engineering", "limitations": "采样会漏长尾，需与硬性信号配合"}
+  ],
+  "toy_demo": "标准库用一组人为指定的毫秒数计算各阶段占比并找出最慢阶段；不是任何系统的实测耗时",
+  "unverified_metrics": [
+    "原页各阶段“典型耗时 / 异常阈值”（如查询改写 100–300ms 等）无可靠出处，已删除",
+    "原页“某 SaaS 公司黑色星期四”“两小时才发现”叙述不可核实，已删除",
+    "本页不引用任何耗时分位或吞吐数字；须自行追踪"
+  ]
+}
