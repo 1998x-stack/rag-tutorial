@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 380" role="img" aria-labelledby="t24q d24q">
+<title id="t24q">乘积量化把长向量切成子向量，每个子向量用一个码本编号近似，从而压缩存储</title>
+<desc id="t24q">原始向量被切成若干子向量，每个子向量在各自的码本里找最近的质心，只存质心的编号（码字）。检索时用查表的方式近似计算距离。代价是精度损失：编号代替了原始数值，距离只是近似。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:13px;font-weight:720}.s{font-size:12px;fill:#4c686c}</style>
+<rect x="0" y="0" width="1080" height="380" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">量化：用码字近似子向量，用精度换存储</text>
+<rect x="70" y="120" width="560" height="70" rx="10" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="90" y="162" class="l">原始向量（例如 768 个浮点数）</text>
+<path d="M200 120 V190 M340 120 V190 M480 120 V190" stroke="#9db9b6" stroke-width="2" stroke-dasharray="4 4"/>
+<text x="100" y="212" class="s">切成 4 个子向量…</text>
+<rect x="70" y="240" width="130" height="52" rx="9" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/><text x="98" y="272" class="l">码字 07</text>
+<rect x="215" y="240" width="130" height="52" rx="9" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/><text x="243" y="272" class="l">码字 42</text>
+<rect x="360" y="240" width="130" height="52" rx="9" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/><text x="388" y="272" class="l">码字 19</text>
+<rect x="505" y="240" width="130" height="52" rx="9" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/><text x="533" y="272" class="l">码字 88</text>
+<path d="M135 190 V236 M280 190 V236 M425 190 V236 M570 190 V236" stroke="#7f9a97" stroke-width="2.5" marker-end="url(#a24)"/>
+<rect x="700" y="180" width="300" height="80" rx="12" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="722" y="214" class="l">存储：一串码字</text><text x="722" y="240" class="s">距离用码本查表近似</text>
+<path d="M640 266 H696" stroke="#7f9a97" stroke-width="3" marker-end="url(#a24)"/>
+<text x="70" y="338" class="s">每个子向量的码本由聚类得到；码本越大，近似越准、存储越多。量化后距离为近似值，会影响召回。</text>
+<text x="70" y="362" class="s">常见做法：先用压缩码粗筛，再用原始向量重排候选（两阶段）。</text>
+<defs><marker id="a24" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#7f9a97"/></marker></defs>
+</svg>

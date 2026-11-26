@@ -1,0 +1,26 @@
+{
+  "chapter": 24,
+  "title": "向量数据库选型与调优：默认配置为什么不够",
+  "sources": [
+    {"id": "hnsw", "url": "https://arxiv.org/abs/1603.09320", "kind": "primary_paper"},
+    {"id": "pq", "url": "https://doi.org/10.1109/TPAMI.2010.57", "kind": "primary_paper"},
+    {"id": "faiss", "url": "https://arxiv.org/abs/1702.08734", "kind": "primary_paper"},
+    {"id": "annbench", "url": "https://arxiv.org/abs/1807.05614", "kind": "benchmark_paper"}
+  ],
+  "claims": [
+    {"claim": "ANN 检索是在精确与速度之间取点，查询参数会明显影响召回", "source": "hnsw", "scope": "paper method", "limitations": "影响幅度依数据而定"},
+    {"claim": "HNSW 的 M 与 efConstruction 在构建时生效，ef 在查询时生效并可逐查询调整", "source": "hnsw", "scope": "paper method", "limitations": "默认值与范围依实现"},
+    {"claim": "IVF 的 nlist 决定聚类桶数，nprobe 决定查询时扫描的桶数", "source": "faiss", "scope": "paper method / implementation", "limitations": "参数交互复杂，需实测"},
+    {"claim": "乘积量化把向量切成子向量并以码本编号近似，用精度换存储", "source": "pq", "scope": "paper method", "limitations": "压缩比与误差依子向量数与码本大小而定"},
+    {"claim": "量化后宜两阶段检索：压缩码粗筛 + 原始向量/交叉编码器重排", "source": "engineering", "scope": "engineering", "limitations": "重排有额外延迟"},
+    {"claim": "公开 ANN 基准的结果依数据集、距离度量、召回目标与硬件而定，不能直接当选型依据", "source": "annbench", "scope": "benchmark", "limitations": "基准方法本身仍具参考价值"},
+    {"claim": "容量估算 = 向量条数 × 维度 × 每维字节 × 索引放大系数（量化可降低每维字节）", "source": "engineering", "scope": "engineering", "limitations": "放大系数需从实测反推"},
+    {"claim": "带元数据过滤的检索通常显著慢于纯向量检索，须单独测", "source": "engineering", "scope": "工程推理", "limitations": "依实现与选择性而定"}
+  ],
+  "toy_demo": "前端用一条人为设定的饱和曲线（recall=1-exp(-ef/80)）展示搜索宽度与召回、延迟的关系；不是任何系统的实测数据",
+  "unverified_metrics": [
+    "原页“召回率 60%→92%”“67%→94%”案例无出处，已删除",
+    "原页 1M×768 维各产品召回 / QPS / 索引耗时表格无可靠出处且随环境变化，已删除",
+    "本页不引用任何具体产品性能或成本数字；参数影响须自行实测"
+  ]
+}

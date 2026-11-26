@@ -83,6 +83,15 @@ document.addEventListener('DOMContentLoaded', () => {
       return '激活索引：' + active.join('、') + '；RRF(k=60) 合并排序：' + merged.join(' > ') +
         '。命中列表是人为指定的，不是真实索引输出。';
     },
+    'ann-tradeoff': () => {
+      const rows = [16, 64, 200, 800].map(ef => {
+        const recall = 1 - Math.exp(-ef / 80);
+        const latency = 4 + ef * 0.03;
+        return 'ef=' + ef + ' → 召回≈' + recall.toFixed(2) + '，延迟≈' + latency.toFixed(1) + 'ms';
+      });
+      return rows.join('；') +
+        '。曲线为人为设定（recall=1-exp(-ef/80)），不是任何系统的实测数据。';
+    },
     'clearance-filter': () => {
       const LEVELS = ['public', 'internal', 'confidential', 'secret'];
       const docs = [['c1', 'public'], ['c2', 'internal'], ['c3', 'confidential']];

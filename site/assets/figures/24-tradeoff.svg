@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 400" role="img" aria-labelledby="t24t d24t">
+<title id="t24t">查询时增大 ef（搜索宽度）会提高召回，但延迟随之上升，收益逐渐饱和</title>
+<desc id="d24t">横轴是查询时的搜索宽度 ef，纵轴是召回率与延迟。随着 ef 增大，召回率快速上升后趋于饱和，而延迟近似线性上升。因此存在一个性价比区间。曲线为教学示意，具体形状依数据与索引而定。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:13px;font-weight:700}.s{font-size:12px;fill:#4c686c}.x{font-size:11px;fill:#617579}</style>
+<rect x="0" y="0" width="1080" height="400" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">搜索宽度越大：召回越接近饱和，延迟却一直涨</text>
+<path d="M120 320 H980 M120 320 V90" stroke="#9db9b6" stroke-width="2"/>
+<text x="940" y="346" class="x">ef →</text>
+<text x="70" y="120" class="x">高</text><text x="70" y="318" class="x">低</text>
+<path d="M120 300 C300 150 520 118 980 108" fill="none" stroke="#147f80" stroke-width="3.5"/>
+<path d="M120 312 L980 150" fill="none" stroke="#d06d4d" stroke-width="3" stroke-dasharray="6 5"/>
+<text x="300" y="132" class="l">召回率</text><text x="820" y="176" class="l">延迟</text>
+<circle cx="520" cy="120" r="7" fill="#7461ba"/>
+<text x="470" y="106" class="l">饱和点附近</text>
+<text x="60" y="382" class="s">教学示意，非实测：真实曲线形状取决于数据分布、嵌入维度与索引实现。调参时应用自己的查询集画一遍。</text>
+</svg>
