@@ -33,6 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
         '：MRR = ' + mrr.toFixed(4) + '；Hit@3 = ' + hit3.toFixed(3) +
         '。只反映这三个给定名次，不代表任何真实系统。';
     },
+    'clip-retrieval': () => {
+      const q = [0.95, 0.30];
+      const imgs = { '图A 装配示意': [0.90, 0.20], '图B 折线趋势': [0.10, 0.98], '图C 无关照片': [-0.80, 0.30] };
+      const cos = (a, b) => (a[0] * b[0] + a[1] * b[1]) / (Math.hypot(...a) * Math.hypot(...b));
+      const ranked = Object.keys(imgs).sort((x, y) => cos(q, imgs[y]) - cos(q, imgs[x]));
+      return '文本向量与图库的余弦相似度：' + ranked.map(n => n + '=' + cos(q, imgs[n]).toFixed(3)).join('，') +
+        '。向量是人为指定的二维坐标，不是任何模型的真实输出。';
+    },
     'clearance-filter': () => {
       const LEVELS = ['public', 'internal', 'confidential', 'secret'];
       const docs = [['c1', 'public'], ['c2', 'internal'], ['c3', 'confidential']];

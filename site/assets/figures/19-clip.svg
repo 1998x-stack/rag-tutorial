@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 420" role="img" aria-labelledby="t19clip d19clip">
+<title id="t19clip">CLIP 用图像编码器与文本编码器把图像和文本映射到同一嵌入空间</title>
+<desc id="d19clip">图像经过图像编码器变成一个向量，文本经过文本编码器变成另一个向量，两者维度相同、落在同一个嵌入空间里。检索时用文本向量与所有图像向量算余弦相似度，距离最近的图像即检索结果。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:15px;font-weight:700}.s{font-size:12.5px;fill:#4c686c}.t{font-size:13px;font-weight:720;fill:#147f80}</style>
+<rect x="0" y="0" width="1080" height="420" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">两个编码器，一个共享空间</text>
+<rect x="50" y="96" width="250" height="76" rx="12" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="70" y="130" class="l">一张图片</text><text x="70" y="154" class="s">产品爆炸图 / 财报折线图 …</text>
+<rect x="50" y="252" width="250" height="76" rx="12" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="70" y="286" class="l">一句文本</text><text x="70" y="310" class="s">“显示零件装配顺序的图”</text>
+<rect x="360" y="96" width="180" height="76" rx="12" fill="#ffffff" stroke="#9db9b6" stroke-width="2"/>
+<text x="382" y="130" class="l">图像编码器</text><text x="382" y="154" class="s">Image Encoder</text>
+<rect x="360" y="252" width="180" height="76" rx="12" fill="#ffffff" stroke="#d9b7a5" stroke-width="2"/>
+<text x="382" y="286" class="l">文本编码器</text><text x="382" y="310" class="s">Text Encoder</text>
+<path d="M300 134 H356 M300 290 H356" stroke="#7f9a97" stroke-width="3" marker-end="url(#a19)"/>
+<path d="M540 134 H640 M540 290 H640" stroke="#7f9a97" stroke-width="3" marker-end="url(#a19)"/>
+<rect x="648" y="86" width="392" height="256" rx="16" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="668" y="118" class="l">同一个嵌入空间（维度相同）</text>
+<circle cx="740" cy="170" r="9" fill="#147f80"/><circle cx="820" cy="150" r="9" fill="#147f80"/><circle cx="900" cy="196" r="9" fill="#147f80"/>
+<circle cx="800" cy="262" r="11" fill="#d06d4d"/>
+<path d="M800 262 L900 196" stroke="#7461ba" stroke-width="2.5" stroke-dasharray="6 5"/>
+<path d="M800 262 L820 150" stroke="#b7c9c7" stroke-width="2" stroke-dasharray="4 5"/>
+<text x="910" y="192" class="t">最近</text><text x="836" y="146" class="s">较远</text>
+<text x="668" y="318" class="s">● 图像向量（青绿）　● 文本向量（橙）　虚线 = 余弦相似度最大</text>
+<text x="50" y="386" class="s">检索：把文本编码成向量，与库中所有图像向量比余弦相似度，取最近的若干条。</text>
+<text x="50" y="408" class="s">要能这样比，两个编码器的输出必须维度一致、且被训练到同一空间——这正是对比学习的作用。</text>
+<defs><marker id="a19" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#7f9a97"/></marker></defs>
+</svg>

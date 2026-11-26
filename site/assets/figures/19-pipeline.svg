@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 320" role="img" aria-labelledby="t19pipe d19pipe">
+<title id="t19pipe">多模态 RAG 的生成流程：检索、组装上下文、交给视觉语言模型生成</title>
+<desc id="d19pipe">多模态问题先进入检索阶段（青绿），在图文混合索引里取回文本段落和图像；再在融合阶段（紫）把文本与图像路径组装成多模态上下文；最后交给视觉语言模型生成阶段（橙）产出回答。检索与生成是两个可以单独升级的环节。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:14px;font-weight:720}.s{font-size:12px;fill:#4c686c}</style>
+<rect x="0" y="0" width="1080" height="320" rx="22" fill="#f7faf8"/>
+<text x="38" y="44" class="k">从问题到回答：检索是青绿，生成是橙，融合是紫</text>
+<rect x="30" y="120" width="170" height="80" rx="12" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="52" y="154" class="l">多模态问题</text><text x="52" y="176" class="s">文字 ＋ 可能附图</text>
+<rect x="250" y="120" width="190" height="80" rx="12" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="270" y="152" class="l">检索（图文索引）</text><text x="270" y="176" class="s">文本向量 + 图像向量</text>
+<rect x="490" y="120" width="200" height="80" rx="12" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/>
+<text x="510" y="152" class="l">组装上下文</text><text x="510" y="176" class="s">段落 ＋ 图像路径</text>
+<rect x="740" y="120" width="150" height="80" rx="12" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="762" y="152" class="l">VLM 生成</text><text x="762" y="176" class="s">读懂图再作答</text>
+<path d="M200 160 H246 M440 160 H486 M690 160 H736" stroke="#7f9a97" stroke-width="3" marker-end="url(#a19p)"/>
+<rect x="918" y="120" width="130" height="80" rx="12" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="938" y="152" class="l">回答 + 引用</text><text x="938" y="176" class="s">含图来源</text>
+<path d="M890 160 H914" stroke="#7f9a97" stroke-width="3" marker-end="url(#a19p)"/>
+<text x="250" y="240" class="s">检索阶段：文本查询与图像都用各自编码器变成向量，在同一空间里取回最相关的若干条。</text>
+<text x="250" y="264" class="s">生成阶段：把取回的文本段落与图像一起交给 VLM；失败时先分清是“没搜到”还是“看到了但没答对”。</text>
+<text x="250" y="288" class="s">两个阶段可独立升级：换更好的检索模型、或换更强的 VLM，各自的评估口径不同。</text>
+<defs><marker id="a19p" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#7f9a97"/></marker></defs>
+</svg>

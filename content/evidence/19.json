@@ -1,0 +1,27 @@
+{
+  "chapter": 19,
+  "title": "多模态 RAG：当知识库里不只有文字",
+  "sources": [
+    {"id": "clip", "url": "https://arxiv.org/abs/2103.00020", "kind": "primary_paper"},
+    {"id": "llava", "url": "https://arxiv.org/abs/2304.08485", "kind": "primary_paper"},
+    {"id": "blip2", "url": "https://arxiv.org/abs/2301.12597", "kind": "primary_paper"},
+    {"id": "colpali", "url": "https://arxiv.org/abs/2407.01449", "kind": "primary_paper"}
+  ],
+  "claims": [
+    {"claim": "CLIP 用图像编码器与文本编码器分别把图像、文本映射到同一（同维）嵌入空间", "source": "clip", "scope": "paper method", "limitations": "两个编码器结构不同，共享的是空间而非权重"},
+    {"claim": "CLIP 以对比学习为目标，让配对的图文靠近、不配对的推远；论文摘要称在约 4 亿对图文上训练", "source": "clip", "scope": "paper abstract", "limitations": "负样本构造与数据整理细节以原论文为准"},
+    {"claim": "检索时用文本向量与图像向量的余弦相似度排序", "source": "engineering", "scope": "engineering / standard", "limitations": "需两编码器输出同维且已对齐到同一空间"},
+    {"claim": "共享嵌入空间支持双向检索（文→图、图→文）与零样本分类", "source": "clip", "scope": "paper method", "limitations": "零样本效果依数据集与提示词而定"},
+    {"claim": "CLIP 对细粒度区分、计数与空间关系较弱", "source": "clip", "scope": "paper finding", "limitations": "具体弱项范围以论文与后续评测为准"},
+    {"claim": "视觉文档检索可把整页当图像做多模态嵌入检索", "source": "colpali", "scope": "paper method", "limitations": "不保留列语义，难以精确聚合数值"},
+    {"claim": "VLM 可基于检索到的图像与文本上下文生成回答", "source": "llava", "scope": "paper method", "limitations": "图与文的关系（互补/冲突）不会自动被正确识别"},
+    {"claim": "图像嵌入存储与 VLM 延迟高于纯文本 RAG（定性）", "source": "engineering", "scope": "工程推理", "limitations": "倍数依模型、压缩与部署方式而定，需自测"},
+    {"claim": "检索与生成是两个可独立升级、评估口径不同的环节", "source": "engineering", "scope": "工程推理", "limitations": "无"}
+  ],
+  "toy_demo": "标准库用三组人为指定的二维向量计算文本向量与图像向量的余弦相似度并排序；结果只反映这些手写坐标，不代表任何真实模型输出",
+  "unverified_metrics": [
+    "原页“企业文档中超过 60% 的知识以非文本形式呈现”“2025 年行业报告”为无出处的叙述，已删除",
+    "原页“多模态索引存储成本是纯文本的 10–50 倍”“GPT-4V 处理一张图额外延迟 1–3 秒”“超过 70% 的企业 RAG 项目涉及非文本模态”均为无可靠出处的数字，已改为定性描述",
+    "本页不引用任何具体效果或性能数字；实测须在同一查询集、同一版本索引与模型下进行"
+  ]
+}
