@@ -1,0 +1,27 @@
+{
+  "chapter": 22,
+  "title": "高级索引架构：从平面索引到多层与多索引",
+  "sources": [
+    {"id": "raptor", "url": "https://arxiv.org/abs/2401.18059", "kind": "primary_paper"},
+    {"id": "hnsw", "url": "https://arxiv.org/abs/1603.09320", "kind": "primary_paper"},
+    {"id": "replug", "url": "https://arxiv.org/abs/2301.12652", "kind": "primary_paper"}
+  ],
+  "claims": [
+    {"claim": "检索精度受搜索空间大小与领域隔离影响，并非只由嵌入模型决定", "source": "engineering", "scope": "工程推理", "limitations": "量化效果依数据规模与分布而定"},
+    {"claim": "层级索引先在粗层摘要定位、再逐层下钻到分块，缩小每层排序的候选集合", "source": "raptor", "scope": "paper method", "limitations": "层数与摘要质量影响收益，构建成本更高"},
+    {"claim": "RAPTOR 用递归聚类与摘要构建树状索引并跨层检索", "source": "raptor", "scope": "paper method", "limitations": "具体聚类与摘要配置以原论文为准"},
+    {"claim": "HNSW 支持动态插入，但删除常以标记删除处理，可能需定期重建", "source": "hnsw", "scope": "paper method", "limitations": "工程行为依具体实现"},
+    {"claim": "多索引需按查询类型路由，不同索引的分数不可直接相加，宜用 RRF 或归一化", "source": "engineering", "scope": "engineering", "limitations": "路由规则与合并方式需自测"},
+    {"claim": "反馈可用于训练检索器（REPLUG 为一例）", "source": "replug", "scope": "paper method", "limitations": "需反馈信号与训练资源；存在灾难性遗忘风险"},
+    {"claim": "多租户索引有三种常见架构（独立 / 共享+字段过滤 / 混合）", "source": "engineering", "scope": "engineering", "limitations": "过滤须在检索内部完成以保证隔离"},
+    {"claim": "增量为主、定期重建是生产常见折中（工程做法）", "source": "engineering", "scope": "engineering", "limitations": "重建频率依数据变化速度而定"}
+  ],
+  "toy_demo": "标准库用关键词规则选择索引并用 RRF 合并人为指定的命中列表；结果只反映写死的规则与手写命中，不是任何真实索引输出",
+  "unverified_metrics": [
+    "原页“KohakuRAG（2025 年发表于 ACL）4 级树状索引”无法核实，已改用可验证的 RAPTOR",
+    "原页“斯坦福大学 2025 年提出自校正索引”“Pinecone/Weaviate/Milvus 2025–2026 路线图”“预计 12–18 个月落地”无法核实，已删除",
+    "原页“跨国咨询公司”叙述为不可核实的轶事，已改为构造的教学例子",
+    "原页“每租户数据量 > 100 万文档”的分界无出处，已改为定性描述",
+    "本页不引用任何具体性能或成本数字"
+  ]
+}

@@ -67,6 +67,22 @@ document.addEventListener('DOMContentLoaded', () => {
       return '问“退货几天”：' + run('退货几天') + '；问“7 减 3 等于几”：' + run('7 减 3 等于几') +
         '。规则是写死的，不是模型决策；上限 2 步防止失控循环。';
     },
+    'index-route': () => {
+      const IDX = {
+        keyword: q => ['编号', '版本', 'ID'].some(k => q.includes(k)),
+        time: q => ['最近', '2025', '本季'].some(k => q.includes(k)),
+        vector: () => true
+      };
+      const HITS = { keyword: ['doc_v2'], time: ['doc_q3'], vector: ['doc_guide', 'doc_v2'] };
+      const K = 60;
+      const q = '2025 年发布的 API 版本编号是什么？';
+      const active = Object.keys(IDX).filter(n => IDX[n](q));
+      const score = {};
+      active.forEach(n => HITS[n].forEach((d, i) => { score[d] = (score[d] || 0) + 1 / (K + i + 1); }));
+      const merged = Object.keys(score).sort((a, b) => score[b] - score[a] || (a < b ? -1 : 1));
+      return '激活索引：' + active.join('、') + '；RRF(k=60) 合并排序：' + merged.join(' > ') +
+        '。命中列表是人为指定的，不是真实索引输出。';
+    },
     'clearance-filter': () => {
       const LEVELS = ['public', 'internal', 'confidential', 'secret'];
       const docs = [['c1', 'public'], ['c2', 'internal'], ['c3', 'confidential']];
