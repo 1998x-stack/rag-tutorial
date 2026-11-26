@@ -1,0 +1,28 @@
+{
+  "chapter": 20,
+  "title": "GraphRAG 与知识图谱：当“相似”不够用",
+  "sources": [
+    {"id": "graphrag", "url": "https://arxiv.org/abs/2404.16130", "kind": "primary_paper"},
+    {"id": "leiden", "url": "https://arxiv.org/abs/1810.08473", "kind": "primary_paper"},
+    {"id": "hipporag", "url": "https://arxiv.org/abs/2405.14831", "kind": "primary_paper"},
+    {"id": "neo4j", "url": "https://neo4j.com/docs/cypher-manual/current/", "kind": "official_docs"}
+  ],
+  "claims": [
+    {"claim": "向量相似度是排序操作，不能表达关系的集合条件（如“同时参与两个项目”）", "source": "engineering", "scope": "工程推理", "limitations": "换更强嵌入模型不能改变这一点"},
+    {"claim": "向量检索在全局问题、多跳推理、精确匹配、关系理解上容易失手", "source": "graphrag", "scope": "paper motivation", "limitations": "具体表现依数据与查询分布而定"},
+    {"claim": "知识图谱把文本事实表示为（实体，关系，实体）三元组，使关系可被查询", "source": "graphrag", "scope": "paper method", "limitations": "抽取有损，实体消解可能出错"},
+    {"claim": "Microsoft GraphRAG 构建实体/关系图，用社区检测聚成社区，再为社区生成摘要，支持局部与全局搜索", "source": "graphrag", "scope": "paper method", "limitations": "社区算法、层次数、摘要模型为可变实现选择"},
+    {"claim": "Leiden 算法可用于保证社区连通性的社区检测", "source": "leiden", "scope": "paper method", "limitations": "用于 GraphRAG 属工程组合"},
+    {"claim": "图结构可用于支持多跳检索（HippoRAG 为一例）", "source": "hipporag", "scope": "paper method", "limitations": "方法细节以原论文为准"},
+    {"claim": "Cypher 是 Neo4j 的图查询语言，可表达集合与多跳条件", "source": "neo4j", "scope": "official docs", "limitations": "示例查询能否返回结果取决于图中是否有对应数据"},
+    {"claim": "图谱构建的 LLM 成本高于向量索引一遍嵌入（定性）", "source": "engineering", "scope": "工程推理", "limitations": "绝对成本依文档规模、模型与抽取步数而定，需自测"},
+    {"claim": "图与向量应互补使用，按查询类型路由（工程做法）", "source": "engineering", "scope": "engineering", "limitations": "查询分类器本身会误分，需单独评估"}
+  ],
+  "toy_demo": "标准库在手写三元组上做集合交集，找出同时参与多个项目的名字；结果只反映这几个手写三元组，不是图数据库查询",
+  "unverified_metrics": [
+    "原页“混合架构整体准确率较单一方式高 15–30%”为无出处数字，已删除",
+    "原页“100 万文档单次构建成本 5000–20000 美元”“每天改动超过 5%”“超过 30% 是多跳查询”为无可靠出处的数字，已改为定性描述",
+    "原页所称“TechGraphRAG（MEGAVARSHINI 等，2025）”无法核实，已不再引用；仅保留“查询分类路由”这一工程做法的定性描述",
+    "本页不引用任何具体效果或成本数字；实测须在同一查询集、同一模型与索引版本下进行"
+  ]
+}

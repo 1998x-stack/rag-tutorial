@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 420" role="img" aria-labelledby="t20c d20c">
+<title id="t20c">GraphRAG 的层级社区：实体聚成社区，社区再聚成更高层社区，每层都有摘要</title>
+<desc id="d20c">最底层是从文档抽取的实体与关系；社区检测算法把紧密关联的实体聚成社区；每个社区用大模型生成一段摘要；更高层再把社区聚成更大的社区并生成更概括的摘要。回答全局性问题时，先在高层摘要上做映射归约，再下钻到具体实体作为证据。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:14px;font-weight:720}.s{font-size:12px;fill:#4c686c}</style>
+<rect x="0" y="0" width="1080" height="420" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">自下而上：实体 → 社区 → 社区摘要 → 全局摘要</text>
+<circle cx="160" cy="350" r="10" fill="#147f80"/><circle cx="210" cy="330" r="10" fill="#147f80"/><circle cx="250" cy="368" r="10" fill="#147f80"/><circle cx="300" cy="338" r="10" fill="#147f80"/>
+<circle cx="470" cy="352" r="10" fill="#147f80"/><circle cx="520" cy="330" r="10" fill="#147f80"/><circle cx="560" cy="368" r="10" fill="#147f80"/><circle cx="610" cy="340" r="10" fill="#147f80"/>
+<circle cx="790" cy="352" r="10" fill="#147f80"/><circle cx="840" cy="332" r="10" fill="#147f80"/><circle cx="880" cy="366" r="10" fill="#147f80"/>
+<text x="150" y="398" class="s">实体与关系（底层事实）</text>
+<rect x="120" y="230" width="220" height="60" rx="12" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/><text x="150" y="266" class="l">社区摘要 A</text>
+<rect x="420" y="230" width="220" height="60" rx="12" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/><text x="450" y="266" class="l">社区摘要 B</text>
+<rect x="720" y="230" width="220" height="60" rx="12" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/><text x="750" y="266" class="l">社区摘要 C</text>
+<path d="M230 320 V294 M540 320 V294 M840 320 V294" stroke="#7f9a97" stroke-width="2.5" marker-end="url(#a20)"/>
+<rect x="330" y="118" width="420" height="60" rx="12" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/><text x="362" y="154" class="l">更高层社区摘要（更概括）</text>
+<path d="M230 228 L360 182 M540 228 V182 M840 228 L720 182" stroke="#7f9a97" stroke-width="2.5" marker-end="url(#a20)"/>
+<text x="60" y="72" class="s">全局问题（“主要风险有哪些？”）：在高层摘要上做映射-归约，再下钻到具体实体作为证据。</text>
+<text x="60" y="94" class="s">这不是“用图代替向量”，而是给全局性问题另建了一条自下而上的聚合通道。</text>
+<defs><marker id="a20" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#7f9a97"/></marker></defs>
+</svg>

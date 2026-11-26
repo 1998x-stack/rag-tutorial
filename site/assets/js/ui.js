@@ -41,6 +41,22 @@ document.addEventListener('DOMContentLoaded', () => {
       return '文本向量与图库的余弦相似度：' + ranked.map(n => n + '=' + cos(q, imgs[n]).toFixed(3)).join('，') +
         '。向量是人为指定的二维坐标，不是任何模型的真实输出。';
     },
+    'graph-multihop': () => {
+      const triples = [
+        ['张明', 'PARTICIPATES_IN', 'Alpha'], ['张明', 'PARTICIPATES_IN', 'Beta'],
+        ['李芳', 'PARTICIPATES_IN', 'Alpha'], ['李芳', 'PARTICIPATES_IN', 'Gamma'],
+        ['王强', 'PARTICIPATES_IN', 'Beta']
+      ];
+      const by = {};
+      triples.forEach(([s, r, o]) => {
+        if (r !== 'PARTICIPATES_IN') return;
+        (by[s] = by[s] || new Set()).add(o);
+      });
+      const multi = Object.keys(by).filter(n => by[n].size > 1);
+      const rows = Object.keys(by).map(n => n + ' 参与 ' + [...by[n]].join('、'));
+      return rows.join('；') + '。同时参与多个项目的有：' + multi.join('、') +
+        '。这是手写三元组上的集合运算，不是图数据库查询。';
+    },
     'clearance-filter': () => {
       const LEVELS = ['public', 'internal', 'confidential', 'secret'];
       const docs = [['c1', 'public'], ['c2', 'internal'], ['c3', 'confidential']];

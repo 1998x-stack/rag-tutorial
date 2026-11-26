@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 400" role="img" aria-labelledby="t20g d20g">
+<title id="t20g">把事实写成实体与关系后，“同时参与两个项目”变成图上的结构化查询</title>
+<desc id="d20g">图中有员工、项目、部门三类实体节点，边表示关系。员工张明同时有“参与项目Alpha”和“参与项目Beta”两条出边，因此“同时参与两个项目”等价于同时存在这两条边。向量相似度排序无法表达这种集合条件。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.n{font-size:15px;font-weight:720}.e{font-size:12px;fill:#4c686c}.s{font-size:12.5px;fill:#4c686c}</style>
+<rect x="0" y="0" width="1080" height="400" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">实体 = 节点，关系 = 边；“同时”就是两条边同时存在</text>
+<path d="M290 205 L470 130" stroke="#7461ba" stroke-width="2.5"/>
+<path d="M290 205 L470 290" stroke="#7461ba" stroke-width="2.5"/>
+<path d="M290 205 L290 84" stroke="#b7c9c7" stroke-width="2" stroke-dasharray="5 5"/>
+<circle cx="290" cy="205" r="36" fill="#eef7f5" stroke="#147f80" stroke-width="2.5"/>
+<text x="290" y="211" text-anchor="middle" class="n">张明</text>
+<circle cx="470" cy="130" r="36" fill="#eef7f5" stroke="#147f80" stroke-width="2.5"/>
+<text x="470" y="136" text-anchor="middle" class="n">Alpha</text>
+<circle cx="470" cy="290" r="36" fill="#eef7f5" stroke="#147f80" stroke-width="2.5"/>
+<text x="470" y="296" text-anchor="middle" class="n">Beta</text>
+<circle cx="290" cy="84" r="30" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/>
+<text x="290" y="90" text-anchor="middle" class="n">研发部</text>
+<text x="336" y="158" class="e">PARTICIPATES_IN</text>
+<text x="336" y="282" class="e">PARTICIPATES_IN</text>
+<text x="150" y="150" class="e">BELONGS_TO</text>
+<text x="40" y="352" class="s">查询“同时参与 Alpha 和 Beta 的员工” = 从员工节点出发，两条 PARTICIPATES_IN 边分别指向 Alpha 与 Beta。</text>
+<text x="40" y="378" class="s">图上可以精确做集合运算与多跳遍历；但图谱里没有的事实也查不到，覆盖度取决于抽取质量。</text>
+</svg>
