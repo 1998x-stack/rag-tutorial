@@ -25,6 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const demo = {
+    'mrr-hit': () => {
+      const first = [1, 3, null];
+      const mrr = first.reduce((s, r) => s + (r ? 1 / r : 0), 0) / first.length;
+      const hit3 = first.filter(r => r && r <= 3).length / first.length;
+      return '第一个相关文档名次 ' + first.map(r => r === null ? '未命中' : r).join(', ') +
+        '：MRR = ' + mrr.toFixed(4) + '；Hit@3 = ' + hit3.toFixed(3) +
+        '。只反映这三个给定名次，不代表任何真实系统。';
+    },
     'clearance-filter': () => {
       const LEVELS = ['public', 'internal', 'confidential', 'secret'];
       const docs = [['c1', 'public'], ['c2', 'internal'], ['c3', 'confidential']];

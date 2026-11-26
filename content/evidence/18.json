@@ -1,0 +1,25 @@
+{
+  "chapter": 18,
+  "title": "RAG 评估体系：怎样知道系统到底好不好",
+  "sources": [
+    {"id": "ragas", "url": "https://arxiv.org/abs/2309.15217", "kind": "primary_paper"},
+    {"id": "beir", "url": "https://arxiv.org/abs/2104.08663", "kind": "primary_paper"},
+    {"id": "llm_judge", "url": "https://arxiv.org/abs/2306.05685", "kind": "primary_paper"},
+    {"id": "ares", "url": "https://arxiv.org/abs/2311.09476", "kind": "primary_paper"}
+  ],
+  "claims": [
+    {"claim": "RAG 评估需端到端进行；单一维度优化可能损害其他维度（检索召回提高但生成质量下降）", "source": "engineering", "scope": "工程推理", "limitations": "具体因果依实现而定"},
+    {"claim": "评估可拆为检索质量、生成质量、系统质量三个维度", "source": "ragas", "scope": "framework / engineering", "limitations": "维度划分与具体指标依框架而异"},
+    {"claim": "Hit Rate@k 只看前 k 是否至少命中一条相关，Recall@k 看相关文档覆盖率，二者不同", "source": "beir", "scope": "IR metric", "limitations": "都依赖相关性标注口径"},
+    {"claim": "MRR 用第一个相关文档名次的倒数再对查询取均值", "source": "beir", "scope": "IR metric", "limitations": "只反映第一个相关文档，忽略其余"},
+    {"claim": "RAGAS 的 Faithfulness 与 Answer Relevancy 不需参考答案，Context Precision 与 Context Recall 需要", "source": "ragas", "scope": "paper method", "limitations": "计算细节随版本变化，以官方文档为准"},
+    {"claim": "LLM 评审会有偏差（模型、提示、位置），不同模型评分不可直接互比", "source": "llm_judge", "scope": "paper finding", "limitations": "偏差程度依任务与模型而定"},
+    {"claim": "ARES 提供面向 RAG 的自动评估框架", "source": "ares", "scope": "paper method", "limitations": "需其接口与数据"}
+  ],
+  "toy_demo": "标准库对一组手写的『第一个相关文档名次』计算 MRR 与 Hit@3；结果只反映这些给定名次，不代表任何真实系统",
+  "unverified_metrics": [
+    "原页“召回率从 85% 提升到 93%”为无出处的叙述故事，已删除或改为机制描述",
+    "原页“典型 70% / 边界 20% / 对抗 10%”“反馈参与率 2-5%”“Faithfulness 下降 0.05 阈值”等数字无可靠出处或依赖场景，已改为定性描述",
+    "本页不引用任何具体效果数字；指标须在同一标注集、同一模型与索引版本下实测"
+  ]
+}

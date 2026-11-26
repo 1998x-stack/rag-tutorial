@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 420" role="img" aria-labelledby="t18rag d18rag">
+<title id="t18rag">RAGAS 四个核心指标各自需要哪些输入</title>
+<desc id="d18rag">Faithfulness 与 Answer Relevancy 不需要参考答案，前者用上下文与回答，后者用问题与回答；Context Precision 与 Context Recall 需要参考答案，用于判断相关上下文的排序与覆盖。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:13px;font-weight:700}.s{font-size:12.5px;fill:#4c686c}.y{font-size:13px;font-weight:720;fill:#147f80}.n{font-size:13px;font-weight:700;fill:#a9b6b6}</style>
+<rect x="0" y="0" width="1080" height="420" rx="22" fill="#f7faf8"/>
+<text x="38" y="44" class="k">四个指标靠什么算：注意后两个需要参考答案</text>
+<rect x="40" y="100" width="300" height="52" rx="8" fill="#eef5f3"/><text x="58" y="132" class="s">指标 \ 输入</text>
+<rect x="340" y="100" width="150" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="388" y="132" class="l">问题</text>
+<rect x="520" y="100" width="150" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="568" y="132" class="l">回答</text>
+<rect x="700" y="100" width="150" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="728" y="132" class="l">检索上下文</text>
+<rect x="880" y="100" width="150" height="52" rx="8" fill="#eef7f5" stroke="#147f80"/><text x="902" y="132" class="l">参考答案</text>
+<rect x="40" y="158" width="300" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="58" y="190" class="l">Faithfulness</text>
+<rect x="340" y="158" width="150" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="405" y="190" class="n">—</text>
+<rect x="520" y="158" width="150" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="585" y="190" class="y">✔</text>
+<rect x="700" y="158" width="150" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="765" y="190" class="y">✔</text>
+<rect x="880" y="158" width="150" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="945" y="190" class="n">—</text>
+<rect x="40" y="216" width="300" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="58" y="248" class="l">Answer Relevancy</text>
+<rect x="340" y="216" width="150" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="405" y="248" class="y">✔</text>
+<rect x="520" y="216" width="150" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="585" y="248" class="y">✔</text>
+<rect x="700" y="216" width="150" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="765" y="248" class="n">—</text>
+<rect x="880" y="216" width="150" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="945" y="248" class="n">—</text>
+<rect x="40" y="274" width="300" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="58" y="306" class="l">Context Precision</text>
+<rect x="340" y="274" width="150" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="405" y="306" class="y">✔</text>
+<rect x="520" y="274" width="150" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="585" y="306" class="n">—</text>
+<rect x="700" y="274" width="150" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="765" y="306" class="y">✔</text>
+<rect x="880" y="274" width="150" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="945" y="306" class="y">✔</text>
+<rect x="40" y="332" width="300" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="58" y="364" class="l">Context Recall</text>
+<rect x="340" y="332" width="150" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="405" y="364" class="y">✔</text>
+<rect x="520" y="332" width="150" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="585" y="364" class="n">—</text>
+<rect x="700" y="332" width="150" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="765" y="364" class="y">✔</text>
+<rect x="880" y="332" width="150" height="52" rx="8" fill="#fff" stroke="#e5eeea"/><text x="945" y="364" class="y">✔</text>
+<text x="40" y="406" class="s">✔ = 该指标需要该输入；— = 不需要。具体计算细节与是否需要参考答案以 RAGAS 官方文档为准。</text>
+</svg>

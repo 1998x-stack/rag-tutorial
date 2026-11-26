@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 420" role="img" aria-labelledby="t18dim d18dim">
+<title id="t18dim">RAG 评估的三个维度与各自的常用指标</title>
+<desc id="d18dim">检索质量衡量是否找对文档，常用 Hit Rate、MRR、Recall@K、NDCG@K；生成质量衡量答案好不好，常用忠实度、答案相关性、有用性；系统质量衡量能否落地，常用延迟分位、吞吐与成本。三个维度需分别度量再综合判断。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:15px;font-weight:700}.s{font-size:12.5px;fill:#4c686c}</style>
+<rect x="0" y="0" width="1080" height="420" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">三个维度，不能只看其中一个</text>
+<rect x="50" y="110" width="300" height="220" rx="13" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="70" y="148" class="l">检索质量</text><text x="70" y="178" class="s">找对了吗？</text>
+<text x="70" y="212" class="s">· Hit Rate @k</text><text x="70" y="240" class="s">· MRR（平均排序倒数）</text><text x="70" y="268" class="s">· Recall@k</text><text x="70" y="296" class="s">· NDCG@k（位置加权）</text>
+<rect x="390" y="110" width="300" height="220" rx="13" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="410" y="148" class="l">生成质量</text><text x="410" y="178" class="s">答得好吗？</text>
+<text x="410" y="212" class="s">· 忠实度 Faithfulness</text><text x="410" y="240" class="s">· 答案相关性 Relevancy</text><text x="410" y="268" class="s">· 有用性 / 有害性</text><text x="410" y="296" class="s">· 引用正确性</text>
+<rect x="730" y="110" width="300" height="220" rx="13" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/>
+<text x="750" y="148" class="l">系统质量</text><text x="750" y="178" class="s">跑得动吗？</text>
+<text x="750" y="212" class="s">· 延迟 P50 / P95 / P99</text><text x="750" y="240" class="s">· 吞吐 QPS</text><text x="750" y="268" class="s">· 可用性</text><text x="750" y="296" class="s">· 每查询成本</text>
+<text x="50" y="372" class="s">检索好、生成差 → 问题在生成环节；生成好、检索差 → 可能碰巧；两者都好但延迟高 → 生产不可用。</text>
+<text x="50" y="398" class="s">各维度指标名称为常见做法，具体口径（如 k 取多少）需在评估方案中固定下来。</text>
+</svg>
