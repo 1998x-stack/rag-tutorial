@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 400" role="img" aria-labelledby="t23l d23l">
+<title id="t23l">两个框架处在不同层：一个偏应用编排，一个偏数据与索引，中间有重叠区</title>
+<desc id="d23l">上层是应用编排：链、代理、工具调用，是通用 LLM 应用框架的中心；下层是数据与索引：文档接入、分块、索引、检索器与查询引擎，是以数据为中心的 RAG 框架的中心；两者在“检索与编排衔接”的中间区重叠。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:15px;font-weight:720}.s{font-size:12.5px;fill:#4c686c}</style>
+<rect x="0" y="0" width="1080" height="400" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">不是同一层的二选一，而是两层抽象的分工</text>
+<rect x="70" y="80" width="940" height="110" rx="14" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/>
+<text x="96" y="118" class="l">应用编排层</text>
+<text x="96" y="146" class="s">Chain / Agent / Tool / 多步控制流 —— 通用 LLM 应用框架的中心</text>
+<text x="820" y="146" class="l">偏 LangChain</text>
+<rect x="70" y="210" width="940" height="110" rx="14" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="96" y="248" class="l">数据与索引层</text>
+<text x="96" y="276" class="s">文档接入 / 分块 / 索引 / Retriever / QueryEngine —— 以数据为中心的 RAG 框架的中心</text>
+<text x="820" y="276" class="l">偏 LlamaIndex</text>
+<rect x="330" y="176" width="420" height="48" rx="10" fill="#fff1e8" stroke="#d06d4d" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="356" y="206" class="s">重叠区：把检索接到编排、把编排接到数据</text>
+<text x="70" y="360" class="s">两层都能做对方的事，只是“顺手程度”不同。选型应看你的重心：多步编排重，还是数据接入与索引重。</text>
+<text x="70" y="382" class="s">重叠区最容易重复建设：同一个检索逻辑在两边各写一遍，后期维护成本翻倍。</text>
+</svg>

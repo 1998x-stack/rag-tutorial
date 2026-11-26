@@ -1,0 +1,25 @@
+{
+  "chapter": 23,
+  "title": "框架如何选：LangChain、LlamaIndex 与“都不用”",
+  "sources": [
+    {"id": "langchain", "url": "https://python.langchain.com/docs/", "kind": "official_docs"},
+    {"id": "llamaindex", "url": "https://docs.llamaindex.ai/", "kind": "official_docs"},
+    {"id": "rag", "url": "https://arxiv.org/abs/2005.11401", "kind": "primary_paper"},
+    {"id": "survey", "url": "https://arxiv.org/abs/2312.10997", "kind": "survey"}
+  ],
+  "claims": [
+    {"claim": "LangChain 定位为通用 LLM 应用框架，抽象围绕链与代理", "source": "langchain", "scope": "official docs", "limitations": "抽象命名随版本变化"},
+    {"claim": "LlamaIndex 定位为以数据为中心的框架，抽象围绕索引、检索器与查询引擎", "source": "llamaindex", "scope": "official docs", "limitations": "抽象命名随版本变化"},
+    {"claim": "两者处在不同抽象层，中间存在重叠，重叠区易重复建设", "source": "engineering", "scope": "工程推理", "limitations": "层与框架的对应是趋势而非绝对"},
+    {"claim": "框架的价值是封装管道，代价是抽象渗入业务代码、增加迁移成本", "source": "engineering", "scope": "工程推理", "limitations": "具体成本依项目而定"},
+    {"claim": "把检索层封在自己的接口后可降低对具体框架的耦合", "source": "engineering", "scope": "engineering", "limitations": "需要额外抽象设计"},
+    {"claim": "RAG 离线管线本质不变：加载→解析→分块→嵌入→建索引，在线为检索→重排→组装→生成", "source": "rag", "scope": "paper method + engineering", "limitations": "具体环节可实现为不同顺序"},
+    {"claim": "范围小且稳定、或需要精确控制检索口径时，直接用底层 SDK 可能更划算", "source": "engineering", "scope": "engineering", "limitations": "需自担管道代码"}
+  ],
+  "toy_demo": "无运行示例；页面中的两段代码为明确标注的“接口示意（不可运行）”，依赖第三方库与模型凭证",
+  "unverified_metrics": [
+    "原页“某创业公司数据索引代码占维护 60% 以上”“省下三个月”为不可核实的叙述，已删除",
+    "原页“原生支持 100+ 数据源”“内置 10+ 种检索策略”等随版本变化的数字未保留",
+    "本页不引用任何集成数量或性能数字；以官方文档为准"
+  ]
+}
