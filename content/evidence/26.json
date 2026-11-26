@@ -1,0 +1,30 @@
+{
+  "chapter": 26,
+  "title": "前沿 RAG 技术：按“在哪一步动手”来分类",
+  "sources": [
+    {"id": "crag", "url": "https://arxiv.org/abs/2401.15884", "kind": "primary_paper"},
+    {"id": "selfrag", "url": "https://arxiv.org/abs/2310.11511", "kind": "primary_paper"},
+    {"id": "flare", "url": "https://arxiv.org/abs/2305.06983", "kind": "primary_paper"},
+    {"id": "specrag", "url": "https://arxiv.org/abs/2407.08223", "kind": "primary_paper"},
+    {"id": "selfrefine", "url": "https://arxiv.org/abs/2303.17651", "kind": "primary_paper"},
+    {"id": "cove", "url": "https://arxiv.org/abs/2309.11495", "kind": "primary_paper"}
+  ],
+  "claims": [
+    {"claim": "前沿方法可按介入位置分为检索取舍、生成方式、独立校验三类，可分别选用", "source": "engineering", "scope": "工程推理", "limitations": "分类为组织方式，非论文原始划分"},
+    {"claim": "CRAG 用轻量检索评估器对文档打分并按分数走保留 / 扩展 / 回退分支", "source": "crag", "scope": "paper method", "limitations": "评估器有假阳/假阴，阈值需调"},
+    {"claim": "Self-RAG 让模型输出反思标记，决定是否检索并批判生成内容", "source": "selfrag", "scope": "paper method", "limitations": "需专门训练数据与模型"},
+    {"claim": "FLARE 在生成过程中用即将出现的内容发起检索，再把资料接回生成", "source": "flare", "scope": "paper method", "limitations": "检索与生成交替，延迟上升"},
+    {"claim": "Speculative RAG 用较小草稿模型对多个检索子集并行写草稿，再由较大验证模型选一份", "source": "specrag", "scope": "paper method", "limitations": "依赖草稿/验证模型组合"},
+    {"claim": "Self-Refine 让模型对自身输出提出反馈并迭代修改", "source": "selfrefine", "scope": "paper method", "limitations": "可能重复同一错误，非保证"},
+    {"claim": "CoVe 先生成验证问题再独立回答，据此修正答案", "source": "cove", "scope": "paper method", "limitations": "需额外生成与回答开销"},
+    {"claim": "这些方法不改变底层召回能力；召回差时应先修召回", "source": "engineering", "scope": "工程推理", "limitations": "无"},
+    {"claim": "多层叠加会增加延迟与复杂度，需逐层对照计量", "source": "engineering", "scope": "工程推理", "limitations": "无"}
+  ],
+  "toy_demo": "前端用人为设定的相关性分数与阈值演示 CRAG 的保留 / 扩展 / 回退分支；分数不是真实评估器输出",
+  "unverified_metrics": [
+    "原页“召回率骤降到 40% 以下”“延迟 +200%~300%”“减少 30% 幻觉”“检测 80%+ 幻觉”“延迟 +10~20%”等数字无可靠出处，已删除",
+    "原页“将 Self-RAG 部署到生产”轶事不可核实，已删除",
+    "原页“LLM-Critic”若指特定论文无法定位，改用可核实的 Self-Refine 与 CoVe",
+    "本页不引用任何效果或延迟百分比"
+  ]
+}

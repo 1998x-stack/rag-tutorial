@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 360" role="img" aria-labelledby="t26f d26f">
+<title id="t26f">FLARE：生成到低置信处主动发起检索，把新资料接回后继续生成</title>
+<desc id="d26f">生成从左向右进行；当模型对下一步内容的置信度低时，用“即将出现的未来内容”组成查询去检索，取回相关资料后接回上下文，继续生成。检索可能在一个回答里发生多次，因此延迟高于单次检索。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:14px;font-weight:720}.s{font-size:12px;fill:#4c686c}</style>
+<rect x="0" y="0" width="1080" height="360" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">不是“先检索后生成”，而是边生成边检索</text>
+<rect x="60" y="120" width="300" height="56" rx="12" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="82" y="154" class="l">生成中…</text>
+<rect x="360" y="120" width="150" height="56" rx="12" fill="#fff1e8" stroke="#d06d4d" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="380" y="154" class="l">置信度低</text>
+<rect x="560" y="120" width="220" height="56" rx="12" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="582" y="154" class="l">用未来内容检索</text>
+<rect x="830" y="120" width="190" height="56" rx="12" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="852" y="154" class="l">取回新资料</text>
+<path d="M360 148 H356 M510 148 H556 M780 148 H826" stroke="#7f9a97" stroke-width="3" marker-end="url(#a26f)"/>
+<path d="M925 176 C925 250 210 250 210 180" fill="none" stroke="#7461ba" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#a26f)"/>
+<text x="520" y="286" class="s">接回上下文，继续生成（可能多次）</text>
+<text x="60" y="330" class="s">代价：检索与生成交替进行，延迟高于单次检索；长回答里检索可能发生多次。</text>
+<defs><marker id="a26f" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#7f9a97"/></marker></defs>
+</svg>

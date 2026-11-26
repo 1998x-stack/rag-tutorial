@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 380" role="img" aria-labelledby="t26m d26m">
+<title id="t26m">把前沿 RAG 技术按动手的位置分类：检索取舍、生成方式、独立校验</title>
+<desc id="d26m">检索取舍一侧包括 CRAG 的检索评估与回退、Self-RAG 的按需检索；生成方式一侧包括 FLARE 的边生成边检索、Speculative RAG 的草稿与验证两阶段生成；独立校验一侧包括 Self-Refine 与 Chain-of-Verification 的自我修正。三类不在同一步动手，可独立选用。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:15px;font-weight:720}.s{font-size:12.5px;fill:#4c686c}</style>
+<rect x="0" y="0" width="1080" height="380" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">不是清单，而是三处可分别动手的位置</text>
+<rect x="50" y="90" width="300" height="220" rx="14" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="72" y="126" class="l">1. 检索取舍</text>
+<text x="72" y="158" class="s">CRAG：先评估检索质量，再决定保留 /</text>
+<text x="72" y="180" class="s">扩展 / 回退</text>
+<text x="72" y="212" class="s">Self-RAG：由模型决定“要不要检索”、</text>
+<text x="72" y="234" class="s">并对生成加反思标记</text>
+<rect x="390" y="90" width="300" height="220" rx="14" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="412" y="126" class="l">2. 生成方式</text>
+<text x="412" y="158" class="s">FLARE：生成过程中主动发起检索，</text>
+<text x="412" y="180" class="s">用未来内容指导检索</text>
+<text x="412" y="212" class="s">Speculative RAG：草稿模型写多个草稿，</text>
+<text x="412" y="234" class="s">验证模型选一个</text>
+<rect x="730" y="90" width="300" height="220" rx="14" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/>
+<text x="752" y="126" class="l">3. 独立校验</text>
+<text x="752" y="158" class="s">Self-Refine：模型对自己的输出</text>
+<text x="752" y="180" class="s">提出修改并迭代</text>
+<text x="752" y="212" class="s">CoVe：先生成验证问题，再逐条</text>
+<text x="752" y="234" class="s">核对，降低事实错误</text>
+<path d="M350 200 H386 M690 200 H726" stroke="#7f9a97" stroke-width="2.5" marker-end="url(#a26)"/>
+<text x="50" y="348" class="s">三处可独立选用：只解决“检索没检到”不一定要改生成；只解决“答非所问”也不一定要加校验器。</text>
+<defs><marker id="a26" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#7f9a97"/></marker></defs>
+</svg>

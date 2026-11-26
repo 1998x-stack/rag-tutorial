@@ -100,6 +100,17 @@ document.addEventListener('DOMContentLoaded', () => {
       return '各阶段占比：' + rows.join('，') + '；最慢阶段：' + slow[0] + '（' +
         (slow[1] / total * 100).toFixed(1) + '%）。耗时是人为指定，不是实测。';
     },
+    'crag-gate': () => {
+      const scores = [0.82, 0.61, 0.30];
+      const th = 0.7;
+      const max = Math.max(...scores);
+      let route;
+      if (max >= th) route = '保留高相关文档（过滤低相关）并生成';
+      else if (max >= th * 0.5) route = '用扩展查询再检索一次';
+      else route = '回退：不用外部资料生成 / 拒答';
+      return '评估器最高分=' + max.toFixed(2) + '，阈值=' + th.toFixed(1) + ' → ' + route +
+        '。分数与阈值为人为设定示例，不是真实评估器输出。';
+    },
     'clearance-filter': () => {
       const LEVELS = ['public', 'internal', 'confidential', 'secret'];
       const docs = [['c1', 'public'], ['c2', 'internal'], ['c3', 'confidential']];
