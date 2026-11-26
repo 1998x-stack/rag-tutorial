@@ -1,0 +1,28 @@
+{
+  "chapter": 21,
+  "title": "Agentic RAG：让系统自己决定下一步查什么",
+  "sources": [
+    {"id": "react", "url": "https://arxiv.org/abs/2210.03629", "kind": "primary_paper"},
+    {"id": "selfrag", "url": "https://arxiv.org/abs/2310.11511", "kind": "primary_paper"},
+    {"id": "reflexion", "url": "https://arxiv.org/abs/2303.11366", "kind": "primary_paper"},
+    {"id": "langgraph", "url": "https://langchain-ai.github.io/langgraph/", "kind": "official_docs"}
+  ],
+  "claims": [
+    {"claim": "固定流水线（提问→检索→生成）的控制流是写死的，不能根据中间结果改变策略", "source": "engineering", "scope": "工程推理", "limitations": "无"},
+    {"claim": "Agentic RAG 的四个能力可概括为规划、工具使用、反思、记忆", "source": "engineering", "scope": "engineering", "limitations": "划分依框架而异"},
+    {"claim": "ReAct 让模型交替产生推理（Thought）与行动（Action），并用观察（Observation）反馈到下一轮", "source": "react", "scope": "paper method", "limitations": "循环需步数与预算上限"},
+    {"claim": "把控制流写成状态图（节点 + 条件边）便于检查、限步与失败定位；LangGraph 为一代表框架", "source": "langgraph", "scope": "official docs", "limitations": "API 与机制以官方文档为准"},
+    {"claim": "Self-RAG 让模型自主决定何时检索并批判性校验生成结果", "source": "selfrag", "scope": "paper method", "limitations": "方法细节以原论文为准"},
+    {"claim": "Reflexion 用语言化自我反馈改进后续尝试", "source": "reflexion", "scope": "paper method", "limitations": "适用于可重试任务"},
+    {"claim": "循环需限制最大步数与 token 预算，否则可能反复调用而无进展", "source": "engineering", "scope": "工程推理", "limitations": "上限值依任务而定"},
+    {"claim": "多数查询应经前置分类路由到传统 RAG，只有复杂查询走 Agentic 通道", "source": "engineering", "scope": "engineering", "limitations": "分类器本身会误分，需单独评估"},
+    {"claim": "工具设计应关注清晰的签名与描述、幂等、结构化错误、超时（工程实践）", "source": "engineering", "scope": "engineering", "limitations": "无"}
+  ],
+  "toy_demo": "标准库用固定关键词规则模拟 ReAct 循环的“选工具→观察→结束”，并带最大步数；结果只反映写死的规则，不是模型决策",
+  "unverified_metrics": [
+    "原页“NVIDIA Agentic RAG Blueprint v2.6”“默认 6 步”无法核实，已不再引用",
+    "原页“延迟 1–3 秒 vs 5–30 秒”“Token 消耗 2–10 倍 / 3–10 倍”“80% 以上查询是简单问答”“P99 < 3 秒”均为无可靠出处的数字，已改为定性描述",
+    "原页“法律咨询团队”叙述为不可核实的轶事，已改为构造的教学例子",
+    "本页不引用任何具体性能或成本数字；实测须在同一模型、工具与查询分布下进行"
+  ]
+}

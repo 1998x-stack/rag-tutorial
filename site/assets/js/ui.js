@@ -57,6 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
       return rows.join('；') + '。同时参与多个项目的有：' + multi.join('、') +
         '。这是手写三元组上的集合运算，不是图数据库查询。';
     },
+    'react-loop': () => {
+      const tools = { vector: () => '文档：退货政策 7 天内可退', calc: () => '计算：7 - 3 = 4' };
+      const choose = q => /[0-9]/.test(q) ? 'calc' : 'vector';
+      const run = q => {
+        const t = choose(q);
+        return '第1步 行动=' + t + ' 观察=' + tools[t](q) + '；信息够了 → 生成答案（1/2 步）';
+      };
+      return '问“退货几天”：' + run('退货几天') + '；问“7 减 3 等于几”：' + run('7 减 3 等于几') +
+        '。规则是写死的，不是模型决策；上限 2 步防止失控循环。';
+    },
     'clearance-filter': () => {
       const LEVELS = ['public', 'internal', 'confidential', 'secret'];
       const docs = [['c1', 'public'], ['c2', 'internal'], ['c3', 'confidential']];

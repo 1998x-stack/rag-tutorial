@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 360" role="img" aria-labelledby="t21r d21r">
+<title id="t21r">ReAct 的思考-行动-观察循环：模型交替推理与调用工具，直到决定作答</title>
+<desc id="d21r">模型先产生一段思考（Thought），据此选择一个行动（Action）去调用工具；工具返回观察结果（Observation），模型再进入下一轮思考。循环持续到模型认为信息足够，输出最终答案。循环需要步数与预算上限，否则可能反复调用而无进展。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:14px;font-weight:720}.s{font-size:12px;fill:#4c686c}</style>
+<rect x="0" y="0" width="1080" height="360" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">思考 → 行动 → 观察，直到“信息够了”再作答</text>
+<rect x="90" y="140" width="200" height="80" rx="12" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/>
+<text x="112" y="174" class="l">思考 Thought</text><text x="112" y="196" class="s">现在还需要什么？</text>
+<rect x="380" y="140" width="200" height="80" rx="12" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="402" y="174" class="l">行动 Action</text><text x="402" y="196" class="s">调用某个工具</text>
+<rect x="670" y="140" width="220" height="80" rx="12" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="692" y="174" class="l">观察 Observation</text><text x="692" y="196" class="s">工具返回的结果</text>
+<path d="M290 180 H376" stroke="#7f9a97" stroke-width="3" marker-end="url(#a21)"/>
+<path d="M580 180 H666" stroke="#7f9a97" stroke-width="3" marker-end="url(#a21)"/>
+<path d="M780 140 C780 60 250 60 190 136" fill="none" stroke="#7461ba" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#a21)"/>
+<text x="430" y="70" class="s">信息不够 → 再想一步</text>
+<rect x="360" y="270" width="360" height="60" rx="12" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="382" y="306" class="l">信息够了 → 生成最终答案</text>
+<path d="M190 220 C190 300 300 300 356 300" fill="none" stroke="#d06d4d" stroke-width="2.5" marker-end="url(#a21)"/>
+<text x="60" y="330" class="s">每一步都要有上限：最多几步、最多多少 token。没有上限的循环是失控风险。</text>
+<defs><marker id="a21" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#7f9a97"/></marker></defs>
+</svg>
