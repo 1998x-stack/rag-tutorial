@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 400" role="img" aria-labelledby="t16def d16def">
+<title id="t16def">在 RAG 流程的输入、检索、输出三处分别放置护栏的纵深防御架构</title>
+<desc id="d16def">用户查询先过输入护栏，再进入检索；检索结果过检索护栏（权限过滤、PII 检查），再进入生成；生成结果过输出护栏后成为回答。任一护栏失守时，后续护栏仍可拦截。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:14px;font-weight:700}.s{font-size:12.5px;fill:#4c686c}.g{font-size:12.5px;font-weight:720;fill:#5a48a0}</style>
+<rect x="0" y="0" width="1080" height="400" rx="22" fill="#f7faf8"/>
+<text x="38" y="44" class="k">三道防线：输入 / 检索 / 输出，层层递进</text>
+<rect x="30" y="150" width="150" height="84" rx="11" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="48" y="184" class="l">用户查询</text><text x="48" y="208" class="s">输入</text>
+<rect x="200" y="150" width="150" height="84" rx="11" fill="#ede9f7" stroke="#7461ba" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="218" y="184" class="l g">输入护栏</text><text x="218" y="208" class="s">注入/越狱过滤</text>
+<rect x="370" y="150" width="150" height="84" rx="11" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="388" y="184" class="l">检索</text><text x="388" y="208" class="s">召回候选</text>
+<rect x="540" y="150" width="150" height="84" rx="11" fill="#ede9f7" stroke="#7461ba" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="558" y="184" class="l g">检索护栏</text><text x="558" y="208" class="s">权限 + PII</text>
+<rect x="710" y="150" width="150" height="84" rx="11" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="728" y="184" class="l">生成</text><text x="728" y="208" class="s">基于上下文作答</text>
+<rect x="880" y="150" width="150" height="84" rx="11" fill="#ede9f7" stroke="#7461ba" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="898" y="184" class="l g">输出护栏</text><text x="898" y="208" class="s">毒性 + 泄露检查</text>
+<path d="M180 192 L200 192" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a16d)"/>
+<path d="M350 192 L370 192" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a16d)"/>
+<path d="M520 192 L540 192" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a16d)"/>
+<path d="M690 192 L710 192" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a16d)"/>
+<path d="M860 192 L880 192" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a16d)"/>
+<path d="M1030 192 L1052 192" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a16d)"/>
+<text x="40" y="282" class="s">纵深防御（Defense in Depth）：任一道失守，后续防线仍可提供保护。</text>
+<text x="40" y="310" class="s">虚线框为护栏节点；检索护栏同时承担“文档权限过滤”与“不可信文本检查”。</text>
+<text x="40" y="348" class="s">护栏是工程组件，不是绝对保证；每一道都有自己的漏报与误报。</text>
+<defs><marker id="a16d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#8ba7a3"/></marker></defs>
+</svg>

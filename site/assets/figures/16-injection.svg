@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 400" role="img" aria-labelledby="t16inj d16inj">
+<title id="t16inj">直接提示注入与间接提示注入两条路径的对比</title>
+<desc id="d16inj">直接注入由用户查询携带恶意指令，在输入带被输入护栏拦住；间接注入把指令藏在会被检索到的文档里，经知识库与检索进入上下文，需要检索护栏与指令层级隔离。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:14px;font-weight:700}.s{font-size:12.5px;fill:#4c686c}.o{font-size:13px;font-weight:720;fill:#b8532f}</style>
+<rect x="0" y="0" width="1080" height="400" rx="22" fill="#f7faf8"/>
+<text x="38" y="40" class="k">同样的指令，从两个不同入口进来</text>
+<text x="40" y="84" class="l o">直接注入：从输入带进入</text>
+<rect x="40" y="100" width="250" height="64" rx="10" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="58" y="128" class="l">用户查询含“忽略以上指令”</text><text x="58" y="150" class="s">输入护栏有机会拦住</text>
+<rect x="350" y="100" width="210" height="64" rx="10" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/>
+<text x="368" y="136" class="l">语言模型</text>
+<path d="M290 132 L350 132" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a16i)"/>
+<text x="40" y="232" class="l o">间接注入：藏进会被检索的文档</text>
+<rect x="40" y="248" width="230" height="64" rx="10" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="58" y="276" class="l">被投毒的文档（含隐藏指令）</text><text x="58" y="298" class="s">网页 / 工单 / 共享文档</text>
+<rect x="315" y="248" width="140" height="64" rx="10" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="333" y="284" class="l">知识库</text>
+<rect x="500" y="248" width="230" height="64" rx="10" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="518" y="276" class="l">用户良性查询</text><text x="518" y="298" class="s">检索召回该文档</text>
+<rect x="775" y="248" width="265" height="64" rx="10" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/>
+<text x="793" y="276" class="l">模型把文本当指令</text><text x="793" y="298" class="s">→ 越权/泄露行为</text>
+<path d="M270 280 L315 280" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a16i)"/>
+<path d="M455 280 L500 280" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a16i)"/>
+<path d="M730 280 L775 280" fill="none" stroke="#8ba7a3" stroke-width="2" marker-end="url(#a16i)"/>
+<text x="40" y="356" class="s">难点：模型在同一 token 流里很难可靠区分“数据”与“指令”；间接注入必须靠检索护栏 + 指令层级共同防御。</text>
+<text x="40" y="382" class="s">两条路径为机制示意；实际攻击手法多变，不存在单一万能防御。</text>
+<defs><marker id="a16i" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#8ba7a3"/></marker></defs>
+</svg>

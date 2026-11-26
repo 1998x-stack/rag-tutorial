@@ -1,0 +1,25 @@
+{
+  "chapter": 16,
+  "title": "内容安全护栏：RAG 的三道防线",
+  "sources": [
+    {"id": "indirect_injection", "url": "https://arxiv.org/abs/2302.12173", "kind": "primary_paper"},
+    {"id": "owasp", "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/", "kind": "industry_standard"},
+    {"id": "presidio", "url": "https://github.com/microsoft/presidio", "kind": "official_tool"},
+    {"id": "nemo", "url": "https://github.com/NVIDIA/NeMo-Guardrails", "kind": "official_tool"},
+    {"id": "llama_guard", "url": "https://arxiv.org/abs/2312.06674", "kind": "primary_paper"}
+  ],
+  "claims": [
+    {"claim": "RAG 把外部文档接入上下文，使攻击面从输入扩展到检索文档与输出", "source": "engineering", "scope": "工程推理", "limitations": "具体风险面依系统是否接入外部/可写数据源而定"},
+    {"claim": "间接提示注入：藏在会被检索到的文本里的指令可操控集成化应用", "source": "indirect_injection", "scope": "paper finding", "limitations": "论文在特定集成场景上演示，实际可利用性因系统而异"},
+    {"claim": "提示注入被 OWASP 列为 LLM 应用风险首位，难以靠单一过滤器解决", "source": "owasp", "scope": "industry guidance", "limitations": "清单随版本更新，条目排序非严格排名"},
+    {"claim": "Presidio 结合正则识别器与 NER 做 PII 检测与匿名化", "source": "presidio", "scope": "official tool", "limitations": "NER 会漏检变体；API 以官方文档为准，正文代码为示意"},
+    {"claim": "NeMo Guardrails 用声明式规则约束话题与对话流；Llama Guard 用分类模型判断违规", "source": "nemo", "scope": "official tool / paper", "limitations": "规则需维护；分类器会有偏差与误报"},
+    {"claim": "护栏在漏报与误报之间权衡，需同时度量拦截效果与误伤率", "source": "engineering", "scope": "工程推理", "limitations": "具体阈值依场景风险而定"}
+  ],
+  "toy_demo": "标准库正则对邮箱、手机号、卡号做占位符替换；不识别无固定格式的人名/地名，非 NER",
+  "unverified_metrics": [
+    "原页“2025 年底某 AI 编程助手泄露事件”无公开可核出处，已删除或改为无具体事件的机制描述",
+    "原页“<1ms / 50~200ms / 100~500ms / 200~800ms / 1~5s”等延迟数字依赖实现与硬件，无可靠出处，已改为定性代价表述",
+    "原页“欧盟 AI 法案已全面生效”“最高 3500 万欧元或 7% 营业额”等具体条款与时间点，本页改为定性提醒并以官方法条为准，未复述具体数字"
+  ]
+}

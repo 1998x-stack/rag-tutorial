@@ -25,6 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const demo = {
+    'pii-mask': () => {
+      const sample = '联系 james@company.com 或 13800001111，卡号 4111 1111 1111 1111。';
+      const masked = sample
+        .replace(/[\w.+-]+@[\w-]+\.[\w.-]+/g, '<email已脱敏>')
+        .replace(/1[3-9]\d{9}/g, '<phone已脱敏>')
+        .replace(/\b\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}\b/g, '<card已脱敏>');
+      return '正则脱敏后：' + masked + '（人名等无固定格式的实体不会被识别）';
+    },
     'claim-split': () => {
       const answer = 'Transformer 的 self-attention 可以并行计算，且通过位置编码感知顺序。它的复杂度随序列长度平方增长。';
       const parts = answer.split(/[。；;]|，且|，并|，以及/).map(s => s.trim()).filter(Boolean);
