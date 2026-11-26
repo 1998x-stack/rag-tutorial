@@ -25,6 +25,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const demo = {
+    'clearance-filter': () => {
+      const LEVELS = ['public', 'internal', 'confidential', 'secret'];
+      const docs = [['c1', 'public'], ['c2', 'internal'], ['c3', 'confidential']];
+      const vis = level => docs.filter(d => LEVELS.indexOf(d[1]) <= LEVELS.indexOf(level))
+        .map(d => d[0]).join(', ');
+      return '外部访客(public) 可见: [' + vis('public') + ']；内部员工(internal) 可见: [' +
+        vis('internal') + ']；管理员(secret) 可见: [' + vis('secret') +
+        ']。不可见的分块根本不出现（默认拒绝）。';
+    },
     'pii-mask': () => {
       const sample = '联系 james@company.com 或 13800001111，卡号 4111 1111 1111 1111。';
       const masked = sample

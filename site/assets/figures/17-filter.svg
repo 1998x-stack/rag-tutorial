@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 420" role="img" aria-labelledby="t17filt d17filt">
+<title id="t17filt">后过滤与前过滤两种权限过滤时机的对比</title>
+<desc id="d17filt">后过滤先在整个空间取 top-5，其中 3 条对当前用户不可见，过滤后只剩 2 条，少于想要的 k=3；前过滤先把权限下推为检索条件，只在可见集合里取 top-3，条条可用。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:13.5px;font-weight:700}.s{font-size:12.5px;fill:#4c686c}.y{font-size:12.5px;font-weight:720;fill:#147f80}.o{font-size:12.5px;font-weight:720;fill:#b8532f}</style>
+<rect x="0" y="0" width="1080" height="420" rx="22" fill="#f7faf8"/>
+<text x="38" y="44" class="k">同样是取 3 条，两种过滤时机结果不同</text>
+<text x="40" y="86" class="l o">后过滤：先在整个空间取 top-5</text>
+<rect x="120" y="104" width="150" height="58" rx="9" fill="#eef7f5" stroke="#147f80" stroke-width="1.6"/><text x="140" y="130" class="l">#1 可见</text><text x="140" y="150" class="s">保留</text>
+<rect x="290" y="104" width="150" height="58" rx="9" fill="#fff1e8" stroke="#d06d4d" stroke-width="1.6"/><text x="310" y="130" class="l o">#2 不可见</text><text x="310" y="150" class="s">丢弃</text>
+<rect x="460" y="104" width="150" height="58" rx="9" fill="#fff1e8" stroke="#d06d4d" stroke-width="1.6"/><text x="480" y="130" class="l o">#3 不可见</text><text x="480" y="150" class="s">丢弃</text>
+<rect x="630" y="104" width="150" height="58" rx="9" fill="#eef7f5" stroke="#147f80" stroke-width="1.6"/><text x="650" y="130" class="l">#4 可见</text><text x="650" y="150" class="s">保留</text>
+<rect x="800" y="104" width="150" height="58" rx="9" fill="#fff1e8" stroke="#d06d4d" stroke-width="1.6"/><text x="820" y="130" class="l o">#5 不可见</text><text x="820" y="150" class="s">丢弃</text>
+<text x="40" y="205" class="s">过滤后只剩 2 条可用 → 少于想要的 k=3（召回塌缩）</text>
+<text x="40" y="248" class="l o">前过滤：先在可见集合上取 top-3</text>
+<rect x="120" y="266" width="150" height="58" rx="9" fill="#eef7f5" stroke="#147f80" stroke-width="1.6"/><text x="140" y="292" class="l">#1 可见</text>
+<rect x="290" y="266" width="150" height="58" rx="9" fill="#eef7f5" stroke="#147f80" stroke-width="1.6"/><text x="310" y="292" class="l">#2 可见</text>
+<rect x="460" y="266" width="150" height="58" rx="9" fill="#eef7f5" stroke="#147f80" stroke-width="1.6"/><text x="480" y="292" class="l">#3 可见</text>
+<rect x="630" y="266" width="150" height="58" rx="9" fill="#eef7f5" stroke="#147f80" stroke-width="1.6"/><text x="650" y="292" class="l">#4 可见</text>
+<text x="40" y="366" class="s">三条都可用；代价是过滤后候选集变小，可能影响 ANN 索引的效率与准确度。</text>
+<text x="40" y="392" class="s">图中排名为示意，不是真实检索结果；实际影响取决于数据分布与索引类型。</text>
+</svg>

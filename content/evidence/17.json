@@ -1,0 +1,24 @@
+{
+  "chapter": 17,
+  "title": "数据隐私与访问控制：让检索只看得见该看的",
+  "sources": [
+    {"id": "gdpr", "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj", "kind": "official_regulation"},
+    {"id": "nist_abac", "url": "https://csrc.nist.gov/pubs/sp/800/162/upd2/final", "kind": "official_guide"},
+    {"id": "nist_log", "url": "https://csrc.nist.gov/pubs/sp/800/92/final", "kind": "official_guide"},
+    {"id": "weaviate", "url": "https://weaviate.io/developers/weaviate/concepts/data", "kind": "official_tool"}
+  ],
+  "claims": [
+    {"claim": "向量检索按相关性返回而不考虑权限，与最小权限原则存在张力", "source": "engineering", "scope": "工程推理", "limitations": "具体风险依系统是否共享索引与数据敏感度而定"},
+    {"claim": "RAG 的检索单元是分块，使文档级控制过粗；分块级与 ABAC 更细但治理成本更高", "source": "engineering", "scope": "工程推理", "limitations": "粒度选择应基于最坏泄露后果"},
+    {"claim": "ABAC 依据用户/资源/环境属性动态判定访问，模型定义见 NIST SP 800-162", "source": "nist_abac", "scope": "official guide", "limitations": "策略复杂、难审计"},
+    {"claim": "多租户可用物理隔离或逻辑隔离；逻辑隔离安全性依赖过滤逻辑正确性", "source": "weaviate", "scope": "official tool / engineering", "limitations": "供应商实现细节不同"},
+    {"claim": "后过滤会因不可见文档占位而使可用结果不足 k（召回塌缩）；前过滤把权限下推为检索条件", "source": "engineering", "scope": "工程推理", "limitations": "实际影响取决于数据分布与索引类型"},
+    {"claim": "安全日志应记录完整访问事件以支持审计与异常检测", "source": "nist_log", "scope": "official guide", "limitations": "日志本身也需保护以免泄露"},
+    {"claim": "删除个人数据时须同时删除对应向量与索引条目（GDPR 第 17 条删除权）", "source": "gdpr", "scope": "official regulation", "limitations": "具体义务条款以官方法条为准；本页为工程解读"}
+  ],
+  "toy_demo": "标准库按密级线性比较过滤分块列表；用简化的单维密级模型演示默认拒绝，非完整 ABAC",
+  "unverified_metrics": [
+    "原页“2024 年初财富 500 强、实习生 47 次查询拼出并购计划”为无出处的叙述故事，已删除或改为机制描述",
+    "原页未含具体百分比效果数字；本页不引用任何量化提升或泄露率，相关结论需在真实系统上审计"
+  ]
+}
