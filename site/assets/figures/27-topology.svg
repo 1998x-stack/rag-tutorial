@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 470" role="img" aria-labelledby="t27top d27top">
+<title id="t27top">生产级 RAG 部署的分层：无状态的 API 实例可横向扩展，有状态的缓存、向量库与推理集群需单独规划</title>
+<desc id="d27top">客户端请求先经过 API 网关（负载均衡与限流）；网关后是一组无状态的 RAG API 实例，可随时增减副本。它们共同依赖三个有状态服务：Redis 语义缓存、向量数据库集群（分片）与 GPU 上的 LLM 推理集群。无状态层可以水平扩展，有状态层需要容量规划、连接池上限与降级路径。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:15px;font-weight:720}.s{font-size:12.5px;fill:#4c686c}.tag{font-size:11.5px;font-weight:720}</style>
+<rect x="0" y="0" width="1080" height="470" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">无状态可扩容，有状态要规划</text>
+<rect x="390" y="72" width="300" height="46" rx="11" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="470" y="101" class="l">客户端 Web / Slack / API</text>
+<path d="M540 118 V132" stroke="#7f9a97" stroke-width="3" marker-end="url(#a27t)"/>
+<rect x="390" y="134" width="300" height="46" rx="11" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="440" y="157" class="l">API 网关：负载均衡 / 限流</text>
+<text x="440" y="174" class="s">熔断、鉴权、请求超时</text>
+<path d="M540 180 V196 M210 208 V196 M870 208 V196 M210 196 H870" fill="none" stroke="#7f9a97" stroke-width="2.5"/>
+<path d="M210 196 V204 M540 196 V204 M870 196 V204" stroke="#7f9a97" stroke-width="2.5" marker-end="url(#a27t)"/>
+<rect x="90" y="206" width="240" height="52" rx="11" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="150" y="237" class="l">RAG API 实例 1</text>
+<rect x="420" y="206" width="240" height="52" rx="11" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="480" y="237" class="l">RAG API 实例 2</text>
+<rect x="750" y="206" width="240" height="52" rx="11" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="810" y="237" class="l">RAG API 实例 N</text>
+<text x="90" y="284" class="tag" fill="#b4552f">无状态层：请求不含本地会话状态，可随时增减副本</text>
+<path d="M210 288 V300 M540 288 V300 M870 288 V300" stroke="#7f9a97" stroke-width="2.5" marker-end="url(#a27t)"/>
+<rect x="90" y="302" width="240" height="88" rx="12" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/>
+<text x="112" y="332" class="l">Redis 语义缓存</text>
+<text x="112" y="356" class="s">相似查询命中则直接返回</text>
+<text x="112" y="376" class="s">需设 TTL 与容量上限</text>
+<rect x="420" y="302" width="240" height="88" rx="12" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="442" y="332" class="l">向量数据库集群</text>
+<text x="442" y="356" class="s">分片 1 … N，副本保可用</text>
+<text x="442" y="376" class="s">连接池要设上限与队列</text>
+<rect x="750" y="302" width="240" height="88" rx="12" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="772" y="332" class="l">LLM 推理集群</text>
+<text x="772" y="356" class="s">GPU 1 … N，承载生成</text>
+<text x="772" y="376" class="s">显存决定并发与上下文</text>
+<text x="90" y="424" class="tag" fill="#5b4a94">有状态层：需要容量规划、健康检查与降级路径</text>
+<text x="90" y="450" class="s">任一有状态依赖不可用，都要有明确的降级行为，而不是直接返回 500。</text>
+<defs><marker id="a27t" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#7f9a97"/></marker></defs>
+</svg>

@@ -1,0 +1,26 @@
+{
+  "chapter": 27,
+  "title": "生产级 RAG 部署：把无状态服务与有状态依赖分开",
+  "sources": [
+    {"id": "dockercompose", "url": "https://docs.docker.com/compose/", "kind": "official_docs"},
+    {"id": "redis", "url": "https://redis.io/docs/latest/develop/reference/eviction/", "kind": "official_docs"},
+    {"id": "milvus", "url": "https://milvus.io/docs", "kind": "official_docs"},
+    {"id": "vllm", "url": "https://docs.vllm.ai/", "kind": "official_docs"}
+  ],
+  "claims": [
+    {"claim": "生产系统需区分无状态（API 实例）与有状态（缓存、向量库、推理集群）层，前者可水平扩展", "source": "engineering", "scope": "工程推理", "limitations": "通用分布式系统原则，非某文档原文"},
+    {"claim": "连接池耗尽、外部 API 限流、超时链不匹配是常见的非算法部署故障", "source": "engineering", "scope": "工程经验", "limitations": "为故障模式举例，不含具体数值"},
+    {"claim": "语义缓存按相似度阈值决定命中/未命中；阈值过高漏命中、过低错误命中", "source": "engineering", "scope": "工程推理", "limitations": "阈值依赖模型与度量，需按查询分布实测"},
+    {"claim": "总显存 ≈ 参数量×每参数字节 + 键值缓存；KV 随并发与上下文长度增长", "source": "vllm", "scope": "工程估算式", "limitations": "粗略估算，未含激活与框架开销，须在目标引擎实测"},
+    {"claim": "FP16 每权重 2 字节、INT4 约 0.5 字节，故 7B/13B/70B 权重显存约为 14/26/140GB（FP16）", "source": "engineering", "scope": "算术值", "limitations": "仅权重，教学示意；实际含 KV 缓存等"},
+    {"claim": "降级阶梯：LLM 不可用→仅检索；向量库不可用→缓存或拒答；全不可用→限流", "source": "engineering", "scope": "工程方案", "limitations": "降级行为须与业务确认并演练"},
+    {"claim": "每轮上下文 token 约等于检索结果数 × 平均 chunk 大小", "source": "engineering", "scope": "工程估算", "limitations": "实际以对应模型 tokenizer 计数为准"}
+  ],
+  "toy_demo": "前端用人为设定的缓存相似度与阈值演示命中/未命中分支；数值不是任何真实嵌入模型输出",
+  "unverified_metrics": [
+    "原页“召回率骤降到 40% 以下”“延迟 +200%~300%”等数字无可靠出处，已删除",
+    "原页 GPU 表“生成速度 ~40/55/25/35/15/20 token/s”依赖具体环境且无出处，已删除",
+    "原页成本表“LLM 60-75%”“Embedding 10-20%”“节省 40-70%”等占比与节省率为典型值无出处，已删除",
+    "原页“语义缓存命中率>30%”无出处，已改为需自行观测"
+  ]
+}

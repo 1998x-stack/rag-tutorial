@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 380" role="img" aria-labelledby="t27f d27f">
+<title id="t27f">降级阶梯：从完整检索加生成，逐级退回到仅检索、仅缓存、限流</title>
+<desc id="d27f">正常情况执行完整流水线：检索加生成。当 LLM 推理不可用时，降级为只返回检索到的文档片段，不做生成。当向量数据库不可用时，降级为返回语义缓存或明确拒答，而不是返回 500。当嵌入服务不可用时，可退回关键词检索或排队。当所有依赖都不可用时，对外限流并返回可读的错误信息。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:14px;font-weight:720}.s{font-size:12px;fill:#4c686c}</style>
+<rect x="0" y="0" width="1080" height="380" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">依赖越弱，能力越少，但服务不断</text>
+<rect x="50" y="70" width="980" height="52" rx="11" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="72" y="94" class="l">L0 正常：检索 → 重排 → 生成 → 引用</text>
+<text x="72" y="112" class="s">向量库、嵌入、LLM 均可用</text>
+<rect x="50" y="134" width="980" height="52" rx="11" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="72" y="158" class="l">L1 LLM 不可用：降级为“只返回检索结果”</text>
+<text x="72" y="176" class="s">展示召回的文档片段与出处，不编造答案</text>
+<rect x="50" y="198" width="980" height="52" rx="11" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/>
+<text x="72" y="222" class="l">L2 向量库不可用：返回语义缓存，否则明确拒答</text>
+<text x="72" y="240" class="s">不假装答对；把“暂时不可用”如实告诉用户</text>
+<rect x="50" y="262" width="980" height="52" rx="11" fill="#f0f2f4" stroke="#8a9a9d" stroke-width="2"/>
+<text x="72" y="286" class="l">L3 全部不可用：限流 + 可读错误 + 重试提示</text>
+<text x="72" y="304" class="s">兜底页不是 500；恢复后自动回到 L0</text>
+<text x="50" y="350" class="s">每一条降级路径都要写下预期行为并演练，否则健在检查表里也只是口号。</text>
+<defs><marker id="a27f" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#7f9a97"/></marker></defs>
+</svg>

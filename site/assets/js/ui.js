@@ -254,6 +254,15 @@ document.addEventListener('DOMContentLoaded', () => {
       return '点积：D1=' + dotA.toFixed(3) + '，D2=' + dotB.toFixed(3) +
         ' → D2 较高；余弦：D1=' + cosA.toFixed(3) + '，D2=' + cosB.toFixed(3) +
         ' → D1 较高。数值来自人为指定的二维向量。';
+    },
+    'semantic-cache': () => {
+      const cached = [['如何申请退款？', 0.94], ['API 调用频率上限是多少？', 0.71], ['忘记密码怎么办？', 0.33]];
+      const th = 0.9;
+      const best = cached.reduce((a, b) => b[1] > a[1] ? b : a);
+      const hit = best[1] >= th;
+      return '缓存中最相似的旧查询：“' + best[0] + '”，相似度=' + best[1].toFixed(2) +
+        '，阈值=' + th.toFixed(2) + ' → ' + (hit ? '命中：直接返回缓存答案' : '未命中：走检索 → 生成') +
+        '。相似度与阈值为人为设定示例，不代表任何真实嵌入模型。';
     }
   };
   document.querySelectorAll('button[data-demo]').forEach(button => {

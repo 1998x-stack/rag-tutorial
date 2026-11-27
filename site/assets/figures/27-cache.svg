@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 360" role="img" aria-labelledby="t27c d27c">
+<title id="t27c">语义缓存的分支：相似度高于阈值直接返回缓存答案，低于阈值才走完整检索与生成</title>
+<desc id="d27c">新查询先编码为向量，与缓存中已有查询向量比较相似度。若最高相似度不低于阈值，则直接返回缓存的答案（并刷新过期时间）；否则走完整流水线：检索、重排、生成，再把结果写回缓存。阈值过高会漏掉本可命中的相似查询，过低则可能错误命中不相关的问题。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:14px;font-weight:720}.s{font-size:12px;fill:#4c686c}</style>
+<rect x="0" y="0" width="1080" height="360" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">命中就返回，未命中才走全流程</text>
+<rect x="50" y="100" width="200" height="56" rx="12" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="80" y="134" class="l">新查询 → 编码</text>
+<rect x="310" y="100" width="220" height="56" rx="12" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/>
+<text x="336" y="126" class="l">与缓存向量比相似度</text>
+<text x="336" y="146" class="s">取最高分 s</text>
+<path d="M250 128 H306" stroke="#7f9a97" stroke-width="3" marker-end="url(#a27c)"/>
+<rect x="600" y="60" width="420" height="52" rx="12" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/>
+<text x="622" y="83" class="l">s ≥ 阈值：返回缓存答案</text>
+<text x="622" y="102" class="s">刷新 TTL；不调用检索与生成</text>
+<path d="M530 116 H596" stroke="#7461ba" stroke-width="2.5" marker-end="url(#a27c)"/>
+<rect x="600" y="150" width="420" height="52" rx="12" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="622" y="173" class="l">s &lt; 阈值：走完整流水线</text>
+<text x="622" y="192" class="s">检索 → 重排 → 生成 → 写回缓存</text>
+<path d="M530 152 C560 152 570 176 596 176" fill="none" stroke="#d06d4d" stroke-width="2.5" marker-end="url(#a27c)"/>
+<text x="50" y="250" class="s">阈值过高 → 漏命中（省不到钱）；阈值过低 → 错误命中（答非所问）。两者都必须在自己的查询分布上实测。</text>
+<text x="50" y="280" class="s">缓存是有状态依赖：要设容量上限与淘汰策略，过期答案也要能被清除（如知识库更新后）。</text>
+<text x="50" y="320" class="s">命中率是教学示意中常被引用的指标，但只有在你自己的流量上测出才有意义。</text>
+<defs><marker id="a27c" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#7f9a97"/></marker></defs>
+</svg>
