@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 380" role="img" aria-labelledby="t28l d28l">
+<title id="t28l">持续优化循环：从线上日志到失败模式标注，再到针对性改进、自动化评估与基线对比</title>
+<desc id="d28l">循环的六个步骤依次是：收集线上日志并抽取低质量样本；人工标注失败模式（检索失败、生成无据、格式错误）；做一处针对性改进；在标注测试集上运行自动化评估；与固定基线对比，确认是否真的改善；有效则灰度上线，无效则回退并分析原因。关键在于一次只改一处，并保留可复现的基线。</desc>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#203035}.k{font-size:22px;font-weight:760}.l{font-size:13.5px;font-weight:720}.s{font-size:11.5px;fill:#4c686c}</style>
+<rect x="0" y="0" width="1080" height="380" rx="22" fill="#f7faf8"/>
+<text x="38" y="46" class="k">一次只改一处，并保留可复现的基线</text>
+<rect x="60" y="90" width="290" height="70" rx="12" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="82" y="120" class="l">1. 收集线上日志</text><text x="82" y="142" class="s">抽取低质量回答样本</text>
+<rect x="400" y="90" width="290" height="70" rx="12" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="422" y="120" class="l">2. 标注失败模式</text><text x="422" y="142" class="s">检索失败 / 无据生成 / 格式错</text>
+<rect x="740" y="90" width="290" height="70" rx="12" fill="#fff1e8" stroke="#d06d4d" stroke-width="2"/>
+<text x="762" y="120" class="l">3. 针对性改进一处</text><text x="762" y="142" class="s">分块 / 检索参数 / 提示词</text>
+<path d="M350 125 H396 M690 125 H736" stroke="#7f9a97" stroke-width="2.5" marker-end="url(#a28l)"/>
+<path d="M885 160 V198" stroke="#7f9a97" stroke-width="2.5" marker-end="url(#a28l)"/>
+<rect x="740" y="200" width="290" height="70" rx="12" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/>
+<text x="762" y="230" class="l">4. 自动化评估</text><text x="762" y="252" class="s">在固定标注集上跑指标</text>
+<rect x="400" y="200" width="290" height="70" rx="12" fill="#ede9f7" stroke="#7461ba" stroke-width="2"/>
+<text x="422" y="230" class="l">5. 对比基线</text><text x="422" y="252" class="s">有效？往右走；无效？回退</text>
+<rect x="60" y="200" width="290" height="70" rx="12" fill="#eef7f5" stroke="#147f80" stroke-width="2"/>
+<text x="82" y="230" class="l">6. 灰度上线 / 回退</text><text x="82" y="252" class="s">无效则分析原因再进入下一轮</text>
+<path d="M736 235 H694 M396 235 H354" stroke="#7f9a97" stroke-width="2.5" marker-end="url(#a28l)"/>
+<path d="M205 200 V164 C205 150 205 150 205 150" fill="none" stroke="#7461ba" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#a28l)"/>
+<text x="60" y="316" class="s">没有固定基线与标注集，“改进了”只是感觉；对比必须以同一标注集、同一模型角色、同一索引版本为前提。</text>
+<text x="60" y="346" class="s">配比建议与周期必须结合团队与流量，图中步骤为通用工程做法，不是某产品的固定流程。</text>
+<defs><marker id="a28l" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#7f9a97"/></marker></defs>
+</svg>

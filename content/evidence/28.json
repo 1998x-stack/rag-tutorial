@@ -1,0 +1,25 @@
+{
+  "chapter": 28,
+  "title": "端到端 RAG 项目实战：把各章技术串成一条可评估的流水线",
+  "sources": [
+    {"id": "ragas", "url": "https://arxiv.org/abs/2309.15217", "kind": "primary_paper"},
+    {"id": "ragasdocs", "url": "https://www.ragas.io/", "kind": "official_docs"},
+    {"id": "llamaindex", "url": "https://docs.llamaindex.ai/", "kind": "official_docs"}
+  ],
+  "claims": [
+    {"claim": "系统应分为离线入库与在线查询两条路径，并用评估回路连接", "source": "engineering", "scope": "架构组织", "limitations": "工程方案，非某文档原文"},
+    {"claim": "每个可检索分块需可追溯到来源、位置与版本", "source": "engineering", "scope": "工程原则", "limitations": "无"},
+    {"claim": "RAGAS 提供 faithfulness、answer relevancy、context precision/recall 等自动评估指标", "source": "ragas", "scope": "paper method", "limitations": "同名指标在不同实现与版本间未必可比"},
+    {"claim": "检索与生成应分层度量（Recall@k/MRR/nDCG 与 faithfulness）", "source": "engineering", "scope": "工程实践", "limitations": "指标选择需结合任务"},
+    {"claim": "方案对比需固定标注集、模型角色、向量分与索引版本", "source": "engineering", "scope": "工程原则", "limitations": "无"},
+    {"claim": "持续优化应一次只改一处，并保留可复现基线", "source": "engineering", "scope": "工程实践", "limitations": "周期与配比随团队流量而定"},
+    {"claim": "查询路径的框架参考（摄入管线与查询引擎）", "source": "llamaindex", "scope": "official_docs", "limitations": "具体 API 随版本变化"}
+  ],
+  "toy_demo": "前端用人为规则生成的检索名次演示“一次只改一处”的基线对照；名次不是真实评估结果",
+  "code_notes": "正文代码块均为概念骨架（parse/chunk/embed/index 等为占位符），不可直接运行，已明确标注",
+  "unverified_metrics": [
+    "原页经验表“召回率 +15%”“检索精度 +22%”“召回率 +18%”“迭代速度提升 5 倍”“成本降低 40%”“MTTR 从 2 小时降到 10 分钟”无出处，已删除，改为可迁移做法",
+    "原页“5 秒内获得答案”“50,000 份文档”属示例设定，正文保留为场景描述但未作为性能承诺",
+    "本页不引用任何效果或效率提升百分比"
+  ]
+}

@@ -263,6 +263,15 @@ document.addEventListener('DOMContentLoaded', () => {
       return '缓存中最相似的旧查询：“' + best[0] + '”，相似度=' + best[1].toFixed(2) +
         '，阈值=' + th.toFixed(2) + ' → ' + (hit ? '命中：直接返回缓存答案' : '未命中：走检索 → 生成') +
         '。相似度与阈值为人为设定示例，不代表任何真实嵌入模型。';
+    },
+    ablation: () => {
+      const cases = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+      const rankOf = (baseline, id) => ((id * 7 + (baseline ? 3 : 0)) % 5) + 1;
+      const hitAt = (baseline, k) => cases.filter(id => rankOf(baseline, id) <= k).length / cases.length;
+      const fmt = b => 'Hit@1=' + hitAt(b, 1).toFixed(2) + '、Hit@3=' + hitAt(b, 3).toFixed(2) +
+        '、MRR=' + (cases.reduce((s, id) => s + 1 / rankOf(b, id), 0) / cases.length).toFixed(3);
+      return '基线（单路稠密）：' + fmt(true) + '；变体（加一路稀疏并融合）：' + fmt(false) +
+        '。名次由人为规则生成，同一标注集、同一 k，只改一处；不是真实评估结果。';
     }
   };
   document.querySelectorAll('button[data-demo]').forEach(button => {
